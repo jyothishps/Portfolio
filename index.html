@@ -5,12 +5,12 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Jyothish P S</title>
+  <title>Jyothish P S | Portfolio</title>
 
   <!--
     - favicon
   -->
-  <link rel="shortcut icon" href="./assets/images/logo.ico" type="image/x-icon">
+  <link class="fav-icon" rel="shortcut icon" href="./assets/images/logo.ico" type="image/x-icon">
 
   <!--
     - custom css link
@@ -22,1192 +22,550 @@
   -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
 
 <body>
 
   <!--
-    - #MAIN
+    - #HEADER & NAVBAR
   -->
+  <header class="header">
+    <div class="logo">
+      <a href="#">J<span>PS</span></a>
+    </div>
 
-  <main>
+    <!-- Theme Controller -->
+    <div class="theme-controller">
+      <button class="theme-btn active" data-theme="sunset" title="Sunset Gold">
+        <ion-icon name="sunny-outline"></ion-icon>
+      </button>
+      <button class="theme-btn" data-theme="oled" title="OLED Dark">
+        <ion-icon name="moon-outline"></ion-icon>
+      </button>
+      <button class="theme-btn" data-theme="violet" title="Neon Violet">
+        <ion-icon name="color-palette-outline"></ion-icon>
+      </button>
+    </div>
 
-    <!--
-      - #SIDEBAR
-    -->
+    <nav class="navbar">
+      <ul class="navbar-list">
+        <li class="navbar-item">
+          <a href="#hero" class="navbar-link active" data-nav-link>Home</a>
+        </li>
+        <li class="navbar-item">
+          <a href="#about" class="navbar-link" data-nav-link>About</a>
+        </li>
+        <li class="navbar-item">
+          <a href="#resume" class="navbar-link" data-nav-link>Resume</a>
+        </li>
+        <li class="navbar-item">
+          <a href="#credentials" class="navbar-link" data-nav-link>Credentials</a>
+        </li>
+        <li class="navbar-item">
+          <a href="#blog" class="navbar-link" data-nav-link>Blog</a>
+        </li>
+        <li class="navbar-item">
+          <a href="#contact" class="navbar-link" data-nav-link>Contact</a>
+        </li>
+      </ul>
+    </nav>
 
-    <aside class="sidebar" data-sidebar>
+    <button class="nav-toggle-btn" aria-label="Toggle Menu" data-nav-toggle-btn>
+      <ion-icon name="menu-outline" class="menu-open"></ion-icon>
+      <ion-icon name="close-outline" class="menu-close"></ion-icon>
+    </button>
+  </header>
 
-      <div class="sidebar-info">
+  <!--
+    - #MAIN BENTO GRID
+  -->
+  <main class="bento-container">
 
+    <!-- 1. HERO BENTO CARD -->
+    <section class="bento-card hero-card" id="hero" data-scroll-reveal>
+      <div class="hero-info">
         <figure class="avatar-box">
-          <img src="./assets/images/self-modified.png" alt="Richard hanrick" width="80">
+          <img src="./assets/images/self-modified.png" alt="Jyothish P S" width="120" class="avatar-img">
+          <div class="avatar-glow"></div>
         </figure>
 
-        <div class="info-content">
-          <h1 class="name" title="Richard hanrick">Jyothish P S</h1>
-
-          <p class="title">Web developer</p>
+        <div class="hero-content">
+          <p class="hero-subtitle">Hello, I am</p>
+          <h1 class="hero-name">Jyothish P S</h1>
+          <p class="hero-title-badge">Web Developer & AI/ML Enthusiast</p>
+          
+          <ul class="social-list">
+            <li class="social-item">
+              <a href="https://www.linkedin.com/in/jyothish-p-s-672057241/" class="social-link" target="_blank" title="LinkedIn">
+                <ion-icon name="logo-linkedin"></ion-icon>
+              </a>
+            </li>
+            <li class="social-item">
+              <a href="https://github.com/jyothishps" class="social-link" target="_blank" title="GitHub">
+                <ion-icon name="logo-github"></ion-icon>
+              </a>
+            </li>
+            <li class="social-item">
+              <a href="https://www.instagram.com/j__y_o_t_h_i_s__h/" class="social-link" target="_blank" title="Instagram">
+                <ion-icon name="logo-instagram"></ion-icon>
+              </a>
+            </li>
+          </ul>
         </div>
-
-        <button class="info_more-btn" data-sidebar-btn>
-          <span>Show Contacts</span>
-
-          <ion-icon name="chevron-down"></ion-icon>
-        </button>
-
       </div>
 
-      <div class="sidebar-info_more">
+      <div class="hero-contacts">
+        <div class="contact-badge">
+          <div class="badge-icon"><ion-icon name="mail-outline"></ion-icon></div>
+          <div class="badge-info">
+            <span class="badge-title">Email</span>
+            <a href="mailto:jyothishparachalil@gmail.com" class="badge-link">jyothishparachalil@gmail.com</a>
+          </div>
+        </div>
+        <div class="contact-badge">
+          <div class="badge-icon"><ion-icon name="phone-portrait-outline"></ion-icon></div>
+          <div class="badge-info">
+            <span class="badge-title">Phone</span>
+            <a href="tel:+919539728117" class="badge-link">+91 953 972 8117</a>
+          </div>
+        </div>
+        <div class="contact-badge">
+          <div class="badge-icon"><ion-icon name="calendar-outline"></ion-icon></div>
+          <div class="badge-info">
+            <span class="badge-title">Birthday</span>
+            <span class="badge-text">January 8, 2005</span>
+          </div>
+        </div>
+      </div>
+    </section>
 
-        <div class="separator"></div>
+    <!-- 2. ABOUT ME BENTO CARD -->
+    <section class="bento-card about-card" id="about" data-scroll-reveal>
+      <div class="card-header-wrapper">
+        <div class="card-icon-box"><ion-icon name="person-outline"></ion-icon></div>
+        <h2 class="card-title">About Me</h2>
+      </div>
+      <div class="about-text">
+        <p>
+          Hi, I'm an MCA graduate who enjoys turning ideas into real-world solutions through technology. I'm
+          passionate about building software, exploring emerging technologies, and continuously learning new skills
+          that help me grow as a developer.
+        </p>
+        <p>
+          From developing web applications to exploring AI and machine learning, I am always excited to
+          learn, experiment, and create value through code.
+        </p>
+      </div>
+    </section>
 
-        <ul class="contacts-list">
-
-          <li class="contact-item">
-
-            <div class="icon-box">
-              <ion-icon name="mail-outline"></ion-icon>
-            </div>
-
-            <div class="contact-info">
-              <p class="contact-title">Email</p>
-
-              <a href="mailto:richard@example.com" class="contact-link">jyothishparachalil@gmail.com</a>
-            </div>
-
-          </li>
-
-          <li class="contact-item">
-
-            <div class="icon-box">
-              <ion-icon name="phone-portrait-outline"></ion-icon>
-            </div>
-
-            <div class="contact-info">
-              <p class="contact-title">Phone</p>
-
-              <a href="tel:+12133522795" class="contact-link">+91 953 972 8117</a>
-            </div>
-
-          </li>
-
-          <li class="contact-item">
-
-            <div class="icon-box">
-              <ion-icon name="calendar-outline"></ion-icon>
-            </div>
-
-            <div class="contact-info">
-              <p class="contact-title">Birthday</p>
-
-              <time datetime="1982-06-23">January 8, 2005</time>
-            </div>
-
-          </li>
-
-          <li class="contact-item">
-
-            <div class="icon-box">
-              <ion-icon name="location-outline"></ion-icon>
-            </div>
-
-            <div class="contact-info">
-              <p class="contact-title">Location</p>
-
-              <address>Perumbavoor, Ernakulam, Kerala</address>
-            </div>
-
-          </li>
-
-        </ul>
-
-        <div class="separator"></div>
-
-        <ul class="social-list">
-
-          <li class="social-item">
-            <a href="https://www.instagram.com/j__y_o_t_h_i_s__h/" class="social-link">
-              <ion-icon class="socials-icons" name="logo-instagram"></ion-icon>
-            </a>
-          </li>
-
-          <li class="social-item">
-            <a href="https://www.linkedin.com/in/jyothish-p-s-672057241/" class="social-link">
-              <ion-icon class="socials-icons" name="logo-linkedin"></ion-icon>
-            </a>
-          </li>
-
-          <li class="social-item">
-            <a href="https://github.com/jyothishps" class="social-link" target="_blank">
-              <ion-icon class="socials-icons" name="logo-github"></ion-icon>
-            </a>
-          </li>
-
-        </ul>
-
+    <!-- 3. LOCATION BENTO CARD -->
+    <section class="bento-card location-card" data-scroll-reveal>
+      <div class="location-content">
+        <div class="location-map-mock">
+          <div class="pulse-ring"></div>
+          <div class="pulse-dot"></div>
+        </div>
+        <div class="location-details">
+          <span class="location-tag"><ion-icon name="location-outline"></ion-icon> Location</span>
+          <h3>Kerala, India</h3>
+          <p>Perumbavoor, Ernakulam</p>
+        </div>
       </div>
 
-    </aside>
+      <div class="live-clock-box">
+        <div class="status-indicator">
+          <span class="status-dot"></span>
+          <span class="status-text">Available</span>
+        </div>
+        <div class="clock-display">
+          <span id="live-clock">--:--:-- --</span> <span class="timezone-label">IST</span>
+        </div>
+      </div>
+    </section>
 
+    <!-- 4. STATS BENTO CARD -->
+    <section class="bento-card stats-card" data-scroll-reveal>
+      <div class="stats-grid">
+        <div class="stat-item">
+          <span class="stat-num">2+</span>
+          <span class="stat-label">Internships</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-num">8+</span>
+          <span class="stat-label">Certificates</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-num">7+</span>
+          <span class="stat-label">Tech Skills</span>
+        </div>
+      </div>
+    </section>
 
+    <!-- 5. SERVICES BENTO CARD -->
+    <section class="bento-card services-card" data-scroll-reveal>
+      <div class="card-header-wrapper">
+        <div class="card-icon-box"><ion-icon name="rocket-outline"></ion-icon></div>
+        <h2 class="card-title">What I'm Doing</h2>
+      </div>
+      <ul class="services-list">
+        <li class="service-item">
+          <div class="service-icon"><img src="./assets/images/icon-design.svg" alt="web dev" width="30"></div>
+          <div class="service-content">
+            <h3>Web Development</h3>
+            <p>Responsive, interactive sites with clean user experiences.</p>
+          </div>
+        </li>
+        <li class="service-item">
+          <div class="service-icon"><img src="./assets/images/icon-dev.svg" alt="ai ml" width="30"></div>
+          <div class="service-content">
+            <h3>AI & Machine Learning</h3>
+            <p>Intelligent systems and practical data-driven solutions.</p>
+          </div>
+        </li>
+        <li class="service-item">
+          <div class="service-icon"><img src="./assets/images/icon-dev.svg" alt="programming" width="30"></div>
+          <div class="service-content">
+            <h3>Problem Solving</h3>
+            <p>Logical programming, debugging and algorithm design.</p>
+          </div>
+        </li>
+        <li class="service-item">
+          <div class="service-icon"><img src="./assets/images/icon-design.svg" alt="design" width="30"></div>
+          <div class="service-content">
+            <h3>Poster Design</h3>
+            <p>Visually appealing creatives and banners using Canva.</p>
+          </div>
+        </li>
+      </ul>
+    </section>
 
+    <!-- 6. SKILLS BENTO CARD (UPGRADED TO MODERN TECH PILLS) -->
+    <section class="bento-card skills-card" data-scroll-reveal>
+      <div class="card-header-wrapper">
+        <div class="card-icon-box"><ion-icon name="code-working-outline"></ion-icon></div>
+        <h2 class="card-title">My Skills</h2>
+      </div>
+      <div class="skills-container">
+        <div class="skill-category">
+          <h3 class="skill-cat-title">Frontend & Design</h3>
+          <div class="skill-pills">
+            <span class="skill-pill" data-tech="html5">HTML5</span>
+            <span class="skill-pill" data-tech="css3">CSS3</span>
+            <span class="skill-pill" data-tech="bootstrap">Bootstrap</span>
+            <span class="skill-pill" data-tech="canva">Canva</span>
+          </div>
+        </div>
+        <div class="skill-category">
+          <h3 class="skill-cat-title">Backend & Programming</h3>
+          <div class="skill-pills">
+            <span class="skill-pill" data-tech="python">Python</span>
+            <span class="skill-pill" data-tech="c">C Language</span>
+            <span class="skill-pill" data-tech="cpp">C++</span>
+            <span class="skill-pill" data-tech="php">PHP</span>
+            <span class="skill-pill" data-tech="django">Django</span>
+          </div>
+        </div>
+      </div>
+    </section>
 
-
-    <!--
-      - #main-content
-    -->
-
-    <div class="main-content">
-
-      <!--
-        - #NAVBAR
-      -->
-
-      <nav class="navbar">
-
-        <ul class="navbar-list">
-
-          <li class="navbar-item">
-            <button class="navbar-link  active" data-nav-link>About</button>
-          </li>
-
-          <li class="navbar-item">
-            <button class="navbar-link" data-nav-link>Resume</button>
-          </li>
-
-          <li class="navbar-item">
-            <button class="navbar-link" data-nav-link>Credentials</button>
-          </li>
-
-          <li class="navbar-item">
-            <button class="navbar-link" data-nav-link>Blog</button>
-          </li>
-
-          <li class="navbar-item">
-            <button class="navbar-link" data-nav-link>Contact</button>
-          </li>
-
-        </ul>
-
-      </nav>
-
-
-
-
-
-      <!--
-        - #ABOUT
-      -->
-
-      <article class="about  active" data-page="about">
-
-        <header>
-          <h2 class="h2 article-title">About me</h2>
-        </header>
-
-        <section class="about-text">
-          <p>
-            Hi, I'm an MCA graduate who enjoys turning ideas into real-world solutions through technology. I'm
-            passionate about building software, exploring emerging technologies, and continuously learning new skills
-            that help me grow as a developer.
-
-            I enjoy working on projects that challenge me to think creatively, solve problems, and improve user
-            experiences. From developing web applications to exploring AI and machine learning, I am always excited to
-            learn, experiment, and create.
-
-            What drives me most is the opportunity to use technology to make a meaningful impact. I believe that great
-            software is not just about writing code—it's about solving problems, creating value, and delivering
-            experiences that matter.
-
-            When I'm not working on projects, you'll often find me learning new technologies, refining my skills, or
-            exploring innovative ideas that inspire my next challenge.
-
-          </p>
-          <!-- 
-          <p>
-            My job is to build your website so that it is functional and user-friendly but at the same time attractive.
-            Moreover, I
-            add personal touch to your product and make sure that is eye-catching and easy to use. My aim is to bring
-            across your
-            message and identity in the most creative way. I created web design for many famous brand companies.
-          </p> -->
-        </section>
-
-
-        <!--
-          - service
-        -->
-
-        <section class="service">
-
-          <h3 class="h3 service-title">What i'm doing</h3>
-
-          <ul class="service-list">
-
-            <li class="service-item">
-
-              <div class="service-icon-box">
-                <img src="./assets/images/icon-design.svg" alt="web development icon" width="40">
-              </div>
-
-              <div class="service-content-box">
-                <h4 class="h4 service-item-title">Web Development</h4>
-
-                <p class="service-item-text">
-                  Building responsive and interactive websites with modern technologies and clean user experiences.
-                </p>
-              </div>
-
+    <!-- 7. TIMELINE BENTO CARD (EDUCATION & EXPERIENCE) -->
+    <section class="bento-card timeline-card" id="resume" data-scroll-reveal>
+      <div class="timeline-container">
+        
+        <!-- Education Column -->
+        <div class="timeline-column">
+          <div class="card-header-wrapper">
+            <div class="card-icon-box"><ion-icon name="book-outline"></ion-icon></div>
+            <h2 class="card-title">Education</h2>
+          </div>
+          <ol class="timeline-list">
+            <li class="timeline-item">
+              <h4 class="timeline-item-title">MACE, Kothamangalam</h4>
+              <span class="timeline-item-date">2025 - 2027</span>
+              <p class="timeline-item-desc">Master of Computer Applications</p>
             </li>
-
-            <li class="service-item">
-
-              <div class="service-icon-box">
-                <img src="./assets/images/icon-dev.svg" alt="AI and ML icon" width="40">
-              </div>
-
-              <div class="service-content-box">
-                <h4 class="h4 service-item-title">AI & Machine Learning</h4>
-
-                <p class="service-item-text">
-                  Exploring intelligent systems and developing practical solutions through machine learning and data
-                  analysis.
-                </p>
-              </div>
-
+            <li class="timeline-item">
+              <h4 class="timeline-item-title">Nirmala College, Muvattupuzha</h4>
+              <span class="timeline-item-date">2022 - 2025</span>
+              <p class="timeline-item-desc">Bachelor of Computer Applications</p>
             </li>
-
-            <li class="service-item">
-
-              <div class="service-icon-box">
-                <img src="./assets/images/icon-dev.svg" alt="programming icon" width="40">
-              </div>
-
-              <div class="service-content-box">
-                <h4 class="h4 service-item-title">Programming & Problem Solving</h4>
-
-                <p class="service-item-text">
-                  Strengthening software development skills through coding, logical thinking, and algorithmic problem
-                  solving.
-                </p>
-              </div>
-
+            <li class="timeline-item">
+              <h4 class="timeline-item-title">MGM HSS, Kuruppampady</h4>
+              <span class="timeline-item-date">2020 - 2022</span>
+              <p class="timeline-item-desc">Plus Two - Computer Science</p>
             </li>
-
-            <li class="service-item">
-
-              <div class="service-icon-box">
-                <img src="./assets/images/icon-design.svg" alt="poster design icon" width="40">
-              </div>
-
-              <div class="service-content-box">
-                <h4 class="h4 service-item-title">Poster Design</h4>
-
-                <p class="service-item-text">
-                  Creating visually appealing posters and digital creatives for events, promotions, and social media
-                  using Canva.
-                </p>
-              </div>
-
-            </li>
-
-          </ul>
-
-        </section>
-
-
-        <!--
-          - testimonials
-        -->
-
-        <!-- <section class="testimonials">
-
-          <h3 class="h3 testimonials-title">Testimonials</h3>
-
-          <ul class="testimonials-list has-scrollbar">
-
-            <li class="testimonials-item">
-              <div class="content-card" data-testimonials-item>
-
-                <figure class="testimonials-avatar-box">
-                  <img src="./assets/images/avatar-1.png" alt="Daniel lewis" width="60" data-testimonials-avatar>
-                </figure>
-
-                <h4 class="h4 testimonials-item-title" data-testimonials-title>Daniel lewis</h4>
-
-                <div class="testimonials-text" data-testimonials-text>
-                  <p>
-                    Richard was hired to create a corporate identity. We were very pleased with the work done. She has a
-                    lot of experience
-                    and is very concerned about the needs of client. Lorem ipsum dolor sit amet, ullamcous cididt
-                    consectetur adipiscing
-                    elit, seds do et eiusmod tempor incididunt ut laborels dolore magnarels alia.
-                  </p>
-                </div>
-
-              </div>
-            </li>
-
-            <li class="testimonials-item">
-              <div class="content-card" data-testimonials-item>
-
-                <figure class="testimonials-avatar-box">
-                  <img src="./assets/images/avatar-2.png" alt="Jessica miller" width="60" data-testimonials-avatar>
-                </figure>
-
-                <h4 class="h4 testimonials-item-title" data-testimonials-title>Jessica miller</h4>
-
-                <div class="testimonials-text" data-testimonials-text>
-                  <p>
-                    Richard was hired to create a corporate identity. We were very pleased with the work done. She has a
-                    lot of experience
-                    and is very concerned about the needs of client. Lorem ipsum dolor sit amet, ullamcous cididt
-                    consectetur adipiscing
-                    elit, seds do et eiusmod tempor incididunt ut laborels dolore magnarels alia.
-                  </p>
-                </div>
-
-              </div>
-            </li>
-
-            <li class="testimonials-item">
-              <div class="content-card" data-testimonials-item>
-
-                <figure class="testimonials-avatar-box">
-                  <img src="./assets/images/avatar-3.png" alt="Emily evans" width="60" data-testimonials-avatar>
-                </figure>
-
-                <h4 class="h4 testimonials-item-title" data-testimonials-title>Emily evans</h4>
-
-                <div class="testimonials-text" data-testimonials-text>
-                  <p>
-                    Richard was hired to create a corporate identity. We were very pleased with the work done. She has a
-                    lot of experience
-                    and is very concerned about the needs of client. Lorem ipsum dolor sit amet, ullamcous cididt
-                    consectetur adipiscing
-                    elit, seds do et eiusmod tempor incididunt ut laborels dolore magnarels alia.
-                  </p>
-                </div>
-
-              </div>
-            </li>
-
-            <li class="testimonials-item">
-              <div class="content-card" data-testimonials-item>
-
-                <figure class="testimonials-avatar-box">
-                  <img src="./assets/images/avatar-4.png" alt="Henry william" width="60" data-testimonials-avatar>
-                </figure>
-
-                <h4 class="h4 testimonials-item-title" data-testimonials-title>Henry william</h4>
-
-                <div class="testimonials-text" data-testimonials-text>
-                  <p>
-                    Richard was hired to create a corporate identity. We were very pleased with the work done. She has a
-                    lot of experience
-                    and is very concerned about the needs of client. Lorem ipsum dolor sit amet, ullamcous cididt
-                    consectetur adipiscing
-                    elit, seds do et eiusmod tempor incididunt ut laborels dolore magnarels alia.
-                  </p>
-                </div>
-
-              </div>
-            </li>
-
-          </ul>
-
-        </section> -->
-
-
-        <!--
-          - testimonials modal
-        -->
-
-        <div class="modal-container" data-modal-container>
-
-          <div class="overlay" data-overlay></div>
-
-          <section class="testimonials-modal">
-
-            <button class="modal-close-btn" data-modal-close-btn>
-              <ion-icon name="close-outline"></ion-icon>
-            </button>
-
-            <div class="modal-img-wrapper">
-              <figure class="modal-avatar-box">
-                <img src="./assets/images/avatar-1.png" alt="Daniel lewis" width="80" data-modal-img>
-              </figure>
-
-              <img src="./assets/images/icon-quote.svg" alt="quote icon">
-            </div>
-
-            <div class="modal-content">
-
-              <h4 class="h3 modal-title" data-modal-title>Daniel lewis</h4>
-
-              <time datetime="2021-06-14">14 June, 2021</time>
-
-              <div data-modal-text>
-                <p>
-                  Richard was hired to create a corporate identity. We were very pleased with the work done. She has a
-                  lot of experience
-                  and is very concerned about the needs of client. Lorem ipsum dolor sit amet, ullamcous cididt
-                  consectetur adipiscing
-                  elit, seds do et eiusmod tempor incididunt ut laborels dolore magnarels alia.
-                </p>
-              </div>
-
-            </div>
-
-          </section>
-
+          </ol>
         </div>
 
-
-        <!--
-          - clients
-        -->
-
-        <!-- <section class="clients">
-
-          <h3 class="h3 clients-title">Clients</h3>
-
-          <ul class="clients-list has-scrollbar">
-
-            <li class="clients-item">
-              <a href="#">
-                <img src="./assets/images/logo-1-color.png" alt="client logo">
-              </a>
-            </li>
-
-            <li class="clients-item">
-              <a href="#">
-                <img src="./assets/images/logo-2-color.png" alt="client logo">
-              </a>
-            </li>
-
-            <li class="clients-item">
-              <a href="#">
-                <img src="./assets/images/logo-3-color.png" alt="client logo">
-              </a>
-            </li>
-
-            <li class="clients-item">
-              <a href="#">
-                <img src="./assets/images/logo-4-color.png" alt="client logo">
-              </a>
-            </li>
-
-            <li class="clients-item">
-              <a href="#">
-                <img src="./assets/images/logo-5-color.png" alt="client logo">
-              </a>
-            </li>
-
-            <li class="clients-item">
-              <a href="#">
-                <img src="./assets/images/logo-6-color.png" alt="client logo">
-              </a>
-            </li>
-
-          </ul>
-
-        </section> -->
-
-      </article>
-
-
-
-
-
-      <!--
-        - #RESUME
-      -->
-
-      <article class="resume" data-page="resume">
-
-        <header>
-          <h2 class="h2 article-title">Resume</h2>
-        </header>
-
-        <section class="timeline">
-
-          <div class="title-wrapper">
-            <div class="icon-box">
-              <ion-icon name="book-outline"></ion-icon>
-            </div>
-
-            <h3 class="h3">Education</h3>
+        <!-- Experience Column -->
+        <div class="timeline-column">
+          <div class="card-header-wrapper">
+            <div class="card-icon-box"><ion-icon name="briefcase-outline"></ion-icon></div>
+            <h2 class="card-title">Experience</h2>
           </div>
-
           <ol class="timeline-list">
-
             <li class="timeline-item">
-
-              <h4 class="h4 timeline-item-title">Mar Athanasius College Of Engineering, Kothamangalam</h4>
-
-              <span>2025 - 2027</span>
-
-              <p class="timeline-text">
-                Master of Computer Application
-              </p>
-
+              <h4 class="timeline-item-title">AI ML Intern</h4>
+              <span class="timeline-item-date">May 2026 - July 2026</span>
+              <p class="timeline-item-desc">Elixir Softwares, Kaloor</p>
             </li>
-
             <li class="timeline-item">
-
-              <h4 class="h4 timeline-item-title">Nirmala College, Muvattupuzha</h4>
-
-              <span>2022 - 2025</span>
-
-              <p class="timeline-text">
-                Bachelor of Computer Application
-              </p>
-
+              <h4 class="timeline-item-title">Python Django Intern</h4>
+              <span class="timeline-item-date">Dec 2024 - Apr 2025</span>
+              <p class="timeline-item-desc">Progressive Software Solutions, Muvattupuzha</p>
             </li>
-
-            <li class="timeline-item">
-
-              <h4 class="h4 timeline-item-title">MGM Higher Secondary School, Kuruppampady</h4>
-
-              <span>2020 - 2022</span>
-
-              <p class="timeline-text">
-                Plus Two - Computer Science
-              </p>
-
-            </li>
-
-            <li class="timeline-item">
-
-              <h4 class="h4 timeline-item-title">St. Mary's High School, Krariyely</h4>
-
-              <span>2020</span>
-
-              <p class="timeline-text">
-                SSLC
-              </p>
-
-            </li>
-
           </ol>
+        </div>
 
-        </section>
+      </div>
+    </section>
 
-        <section class="timeline">
+    <!-- 8. CREDENTIALS BENTO CARD -->
+    <section class="bento-card credentials-card" id="credentials" data-scroll-reveal>
+      <div class="credentials-header">
+        <div class="card-header-wrapper">
+          <div class="card-icon-box"><ion-icon name="ribbon-outline"></ion-icon></div>
+          <h2 class="card-title">Credentials</h2>
+        </div>
 
-          <div class="title-wrapper">
-            <div class="icon-box">
-              <ion-icon name="book-outline"></ion-icon>
+        <!-- Filter Controls -->
+        <ul class="filter-list">
+          <li class="filter-item"><button class="active" data-filter-btn>All</button></li>
+          <li class="filter-item"><button data-filter-btn>NPTEL</button></li>
+          <li class="filter-item"><button data-filter-btn>DataCamp</button></li>
+          <li class="filter-item"><button data-filter-btn>Others</button></li>
+        </ul>
+
+        <!-- Mobile Filter Dropdown -->
+        <div class="filter-select-box">
+          <button class="filter-select" data-select>
+            <div class="select-value" data-selecct-value>Select category</div>
+            <div class="select-icon"><ion-icon name="chevron-down"></ion-icon></div>
+          </button>
+          <ul class="select-list">
+            <li class="select-item"><button data-select-item>All</button></li>
+            <li class="select-item"><button data-select-item>NPTEL</button></li>
+            <li class="select-item"><button data-select-item>DataCamp</button></li>
+            <li class="select-item"><button data-select-item>Others</button></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Grid of Certificates -->
+      <ul class="project-list">
+        <li class="project-item active" data-filter-item data-category="nptel"
+            data-cert-title="Privacy and Security in Online Social Media" data-cert-category="NPTEL" data-cert-img="./assets/images/privacy-nptel.png" data-cert-verify="https://nptel.ac.in/">
+          <a href="#credentials">
+            <figure class="project-img">
+              <div class="project-item-icon-box"><ion-icon name="eye-outline"></ion-icon></div>
+              <img src="./assets/images/privacy-nptel.png" alt="Privacy and Security in Online Social Media" loading="lazy">
+            </figure>
+            <h3 class="project-title">Privacy and Security in Online Social Media</h3>
+            <p class="project-category">NPTEL</p>
+          </a>
+        </li>
+        <li class="project-item active" data-filter-item data-category="others"
+            data-cert-title="TCS iON Career Edge - Young Professional" data-cert-category="TCS iON" data-cert-img="./assets/images/tcs.png" data-cert-verify="https://learning.tcsionhub.in/">
+          <a href="#credentials">
+            <figure class="project-img">
+              <div class="project-item-icon-box"><ion-icon name="eye-outline"></ion-icon></div>
+              <img src="./assets/images/tcs.png" alt="TCS iON Career Edge" loading="lazy">
+            </figure>
+            <h3 class="project-title">TCS iON Career Edge - Young Professional</h3>
+            <p class="project-category">TCS iON</p>
+          </a>
+        </li>
+        <li class="project-item active" data-filter-item data-category="others"
+            data-cert-title="Responsive Web Design" data-cert-category="freeCodeCamp" data-cert-img="./assets/images/freeCodeCamp.png" data-cert-verify="https://www.freecodecamp.org/">
+          <a href="#credentials">
+            <figure class="project-img">
+              <div class="project-item-icon-box"><ion-icon name="eye-outline"></ion-icon></div>
+              <img src="./assets/images/freeCodeCamp.png" alt="Responsive Web Design" loading="lazy">
+            </figure>
+            <h3 class="project-title">Responsive Web Design</h3>
+            <p class="project-category">freeCodeCamp</p>
+          </a>
+        </li>
+        <li class="project-item active" data-filter-item data-category="datacamp"
+            data-cert-title="Introduction to Python" data-cert-category="DataCamp" data-cert-img="./assets/images/introPy.png" data-cert-verify="https://www.datacamp.com/">
+          <a href="#credentials">
+            <figure class="project-img">
+              <div class="project-item-icon-box"><ion-icon name="eye-outline"></ion-icon></div>
+              <img src="./assets/images/introPy.png" alt="Introduction to Python" loading="lazy">
+            </figure>
+            <h3 class="project-title">Introduction to Python</h3>
+            <p class="project-category">DataCamp</p>
+          </a>
+        </li>
+        <li class="project-item active" data-filter-item data-category="datacamp"
+            data-cert-title="Intermediate Python" data-cert-category="DataCamp" data-cert-img="./assets/images/intermediatePy.png" data-cert-verify="https://www.datacamp.com/">
+          <a href="#credentials">
+            <figure class="project-img">
+              <div class="project-item-icon-box"><ion-icon name="eye-outline"></ion-icon></div>
+              <img src="./assets/images/intermediatePy.png" alt="Intermediate Python" loading="lazy">
+            </figure>
+            <h3 class="project-title">Intermediate Python</h3>
+            <p class="project-category">DataCamp</p>
+          </a>
+        </li>
+        <li class="project-item active" data-filter-item data-category="nptel"
+            data-cert-title="Database Management System" data-cert-category="NPTEL" data-cert-img="./assets/images/dbms.png" data-cert-verify="https://nptel.ac.in/">
+          <a href="#credentials">
+            <figure class="project-img">
+              <div class="project-item-icon-box"><ion-icon name="eye-outline"></ion-icon></div>
+              <img src="./assets/images/dbms.png" alt="Database Management System" loading="lazy">
+            </figure>
+            <h3 class="project-title">Database Management System</h3>
+            <p class="project-category">NPTEL</p>
+          </a>
+        </li>
+        <li class="project-item active" data-filter-item data-category="nptel"
+            data-cert-title="Problem solving through programming in C" data-cert-category="NPTEL" data-cert-img="./assets/images/c.png" data-cert-verify="https://nptel.ac.in/">
+          <a href="#credentials">
+            <figure class="project-img">
+              <div class="project-item-icon-box"><ion-icon name="eye-outline"></ion-icon></div>
+              <img src="./assets/images/c.png" alt="Problem solving through programming in C" loading="lazy">
+            </figure>
+            <h3 class="project-title">Problem solving through programming in C</h3>
+            <p class="project-category">NPTEL</p>
+          </a>
+        </li>
+        <li class="project-item active" data-filter-item data-category="others"
+            data-cert-title="Advanced Excel" data-cert-category="ICT Academy of Kerala" data-cert-img="./assets/images/excel.png" data-cert-verify="https://ictkerala.org/">
+          <a href="#credentials">
+            <figure class="project-img">
+              <div class="project-item-icon-box"><ion-icon name="eye-outline"></ion-icon></div>
+              <img src="./assets/images/excel.png" alt="Advanced Excel" loading="lazy">
+            </figure>
+            <h3 class="project-title">Advanced Excel</h3>
+            <p class="project-category">ICT Academy of Kerala</p>
+          </a>
+        </li>
+      </ul>
+    </section>
+
+    <!-- 9. BLOG BENTO CARD -->
+    <section class="bento-card blog-card" id="blog" data-scroll-reveal>
+      <div class="card-header-wrapper">
+        <div class="card-icon-box"><ion-icon name="newspaper-outline"></ion-icon></div>
+        <h2 class="card-title">Blog Posts</h2>
+      </div>
+      <ul class="blog-posts-list">
+        <li class="blog-post-item">
+          <a href="#">
+            <figure class="blog-banner-box">
+              <img src="./assets/images/blog-1.jpg" alt="Design conferences in 2022" loading="lazy">
+            </figure>
+            <div class="blog-content">
+              <div class="blog-meta">
+                <p class="blog-category">Design</p>
+                <span class="dot"></span>
+                <time datetime="2022-02-23">Feb 23, 2022</time>
+              </div>
+              <h3 class="blog-item-title">Design conferences in 2022</h3>
+              <p class="blog-text">Veritatis et quasi architecto beatae vitae dicta sunt, explicabo.</p>
             </div>
-
-            <h3 class="h3">Experience</h3>
-          </div>
-
-          <ol class="timeline-list">
-
-            <li class="timeline-item">
-
-              <h4 class="h4 timeline-item-title">AI ML Intern</h4>
-
-              <span>May 2026 - July 2026</span>
-
-              <p class="timeline-text">
-                Elixir Softwares, Kaloor
-              </p>
-
-            </li>
-
-            <li class="timeline-item">
-
-              <h4 class="h4 timeline-item-title">Python Django Intern</h4>
-
-              <span>Dec 2024 - April 2025</span>
-
-              <p class="timeline-text">
-                Progressive Software Solutions, Muvattupuzha
-              </p>
-
-            </li>
-
-
-          </ol>
-
-        </section>
-
-        <section class="skill">
-
-          <h3 class="h3 skills-title">My skills</h3>
-
-          <ul class="skills-list content-card">
-
-            <li class="skills-item">
-
-              <div class="title-wrapper">
-                <h5 class="h5">HTML</h5>
-                <data value="80">80%</data>
+          </a>
+        </li>
+        <li class="blog-post-item">
+          <a href="#">
+            <figure class="blog-banner-box">
+              <img src="./assets/images/blog-2.jpg" alt="Best fonts every designer" loading="lazy">
+            </figure>
+            <div class="blog-content">
+              <div class="blog-meta">
+                <p class="blog-category">Design</p>
+                <span class="dot"></span>
+                <time datetime="2022-02-23">Feb 23, 2022</time>
               </div>
-
-              <div class="skill-progress-bg">
-                <div class="skill-progress-fill" style="width: 80%;"></div>
+              <h3 class="blog-item-title">Best fonts every designer</h3>
+              <p class="blog-text">Sed ut perspiciatis, nam libero tempore, cum soluta nobis est eligendi.</p>
+            </div>
+          </a>
+        </li>
+        <li class="blog-post-item">
+          <a href="#">
+            <figure class="blog-banner-box">
+              <img src="./assets/images/blog-3.jpg" alt="Design digest #80" loading="lazy">
+            </figure>
+            <div class="blog-content">
+              <div class="blog-meta">
+                <p class="blog-category">Design</p>
+                <span class="dot"></span>
+                <time datetime="2022-02-23">Feb 23, 2022</time>
               </div>
-
-            </li>
-
-            <li class="skills-item">
-
-              <div class="title-wrapper">
-                <h5 class="h5">CSS</h5>
-                <data value="70">70%</data>
+              <h3 class="blog-item-title">Design digest #80</h3>
+              <p class="blog-text">Excepteur sint occaecat cupidatat no proident, quis nostrum exercitationem.</p>
+            </div>
+          </a>
+        </li>
+        <li class="blog-post-item">
+          <a href="#">
+            <figure class="blog-banner-box">
+              <img src="./assets/images/blog-4.jpg" alt="UI interactions of the week" loading="lazy">
+            </figure>
+            <div class="blog-content">
+              <div class="blog-meta">
+                <p class="blog-category">Design</p>
+                <span class="dot"></span>
+                <time datetime="2022-02-23">Feb 23, 2022</time>
               </div>
-
-              <div class="skill-progress-bg">
-                <div class="skill-progress-fill" style="width: 70%;"></div>
-              </div>
-
-            </li>
-
-            <li class="skills-item">
-
-              <div class="title-wrapper">
-                <h5 class="h5">Bootstrap</h5>
-                <data value="90">90%</data>
-              </div>
-
-              <div class="skill-progress-bg">
-                <div class="skill-progress-fill" style="width: 90%;"></div>
-              </div>
-
-            </li>
-
-            <li class="skills-item">
-
-              <div class="title-wrapper">
-                <h5 class="h5">Python</h5>
-                <data value="50">50%</data>
-              </div>
-
-              <div class="skill-progress-bg">
-                <div class="skill-progress-fill" style="width: 50%;"></div>
-              </div>
-
-            </li>
-            <li class="skills-item">
-
-              <div class="title-wrapper">
-                <h5 class="h5">C</h5>
-                <data value="65">65%</data>
-              </div>
-
-              <div class="skill-progress-bg">
-                <div class="skill-progress-fill" style="width: 65%;"></div>
-              </div>
-
-            </li>
-
-            <li class="skills-item">
-
-              <div class="title-wrapper">
-                <h5 class="h5">C++</h5>
-                <data value="70">70%</data>
-              </div>
-
-              <div class="skill-progress-bg">
-                <div class="skill-progress-fill" style="width: 70%;"></div>
-              </div>
-
-            </li>
-
-            <li class="skills-item">
-
-              <div class="title-wrapper">
-                <h5 class="h5">PHP</h5>
-                <data value="90">90%</data>
-              </div>
-
-              <div class="skill-progress-bg">
-                <div class="skill-progress-fill" style="width: 90%;"></div>
-              </div>
-
-            </li>
-
-          </ul>
-
-        </section>
-
-      </article>
-
-
-
-
-
-      <!--
-        - #PORTFOLIO
-      -->
-
-      <article class="credentials" data-page="credentials">
-
-        <header>
-          <h2 class="h2 article-title">Credentials</h2>
-        </header>
-
-        <section class="projects">
-
-          <ul class="filter-list">
-
-            <li class="filter-item">
-              <button class="active" data-filter-btn>All</button>
-            </li>
-
-            <li class="filter-item">
-              <button data-filter-btn>NPTEL</button>
-            </li>
-
-            <li class="filter-item">
-              <button data-filter-btn>DataCamp</button>
-            </li>
-
-            <li class="filter-item">
-              <button data-filter-btn>Others</button>
-            </li>
-
-          </ul>
-
-          <div class="filter-select-box">
-
-            <button class="filter-select" data-select>
-
-              <div class="select-value" data-selecct-value>Select category</div>
-
-              <div class="select-icon">
-                <ion-icon name="chevron-down"></ion-icon>
-              </div>
-
-            </button>
-
-            <ul class="select-list">
-
-              <li class="select-item">
-                <button data-select-item>All</button>
-              </li>
-
-              <li class="select-item">
-                <button data-select-item>NPTEL</button>
-              </li>
-
-              <li class="select-item">
-                <button data-select-item>DataCamp</button>
-              </li>
-
-              <li class="select-item">
-                <button data-select-item>Others</button>
-              </li>
-
-            </ul>
-
-          </div>
-
-          <ul class="project-list">
-
-            <li class="project-item  active" data-filter-item data-category="nptel">
-              <a href="#">
-
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
-
-                  <img src="./assets/images/privacy-nptel.png" alt="Privacy and Security in Online Social Media" loading="lazy">
-                </figure>
-
-                <h3 class="project-title">Privacy and Security in Online Social Media</h3>
-
-                <p class="project-category">NPTEL</p>
-
-              </a>
-            </li>
-
-            <li class="project-item  active" data-filter-item data-category="others">
-              <a href="#">
-
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
-
-                  <img src="./assets/images/tcs.png" alt="tcs" loading="lazy">
-                </figure>
-
-                <h3 class="project-title">TCS iON Carrer Edge - Young Professional</h3>
-
-                <p class="project-category">TCS iON</p>
-
-              </a>
-            </li>
-
-            <li class="project-item  active" data-filter-item data-category="web design">
-              <a href="#">
-
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
-
-                  <img src="./assets/images/freeCodeCamp.png" alt="freeCodeCamp" loading="lazy">
-                </figure>
-
-                <h3 class="project-title">Responsive Web Design</h3>
-
-                <p class="project-category">freeCodeCamp</p>
-
-              </a>
-            </li>
-
-            <li class="project-item  active" data-filter-item data-category="datacamp">
-              <a href="#">
-
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
-
-                  <img src="./assets/images/introPy.png" alt="Introduction to Python" loading="lazy">
-                </figure>
-
-                <h3 class="project-title">Introduction to Python</h3>
-
-                <p class="project-category">DataCamp</p>
-
-              </a>
-            </li>
-
-            <li class="project-item  active" data-filter-item data-category="datacamp">
-              <a href="#">
-
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
-
-                  <img src="./assets/images/intermediatePy.png" alt="Intermediate Python" loading="lazy">
-                </figure>
-
-                <h3 class="project-title">Intermediate Python</h3>
-
-                <p class="project-category">DataCamp</p>
-
-              </a>
-            </li>
-
-            <li class="project-item  active" data-filter-item data-category="nptel">
-              <a href="#">
-
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
-
-                  <img src="./assets/images/dbms.png" alt="Database Management System" loading="lazy">
-                </figure>
-
-                <h3 class="project-title">Database Management System</h3>
-
-                <p class="project-category">NPTEL</p>
-
-              </a>
-            </li>
-
-            <li class="project-item  active" data-filter-item data-category="nptel">
-              <a href="#">
-
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
-
-                  <img src="./assets/images/c.png" alt="Problem solving through programming in C" loading="lazy">
-                </figure>
-
-                <h3 class="project-title">Problem solving through programming in C</h3>
-
-                <p class="project-category">NPTEL</p>
-
-              </a>
-            </li>
-
-            <li class="project-item  active" data-filter-item data-category="others">
-              <a href="#">
-
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
-
-                  <img src="./assets/images/excel.png" alt="Advanced Excel" loading="lazy">
-                </figure>
-
-                <h3 class="project-title">Advanced Excel</h3>
-
-                <p class="project-category">ICT Academy of Kerala</p>
-
-              </a>
-            </li>
-
-          </ul>
-
-        </section>
-
-      </article>
-
-
-
-
-
-      <!--
-        - #BLOG
-      -->
-
-      <article class="blog" data-page="blog">
-
-        <header>
-          <h2 class="h2 article-title">Blog</h2>
-        </header>
-
-        <section class="blog-posts">
-
-          <ul class="blog-posts-list">
-
-            <li class="blog-post-item">
-              <a href="#">
-
-                <figure class="blog-banner-box">
-                  <img src="./assets/images/blog-1.jpg" alt="Design conferences in 2022" loading="lazy">
-                </figure>
-
-                <div class="blog-content">
-
-                  <div class="blog-meta">
-                    <p class="blog-category">Design</p>
-
-                    <span class="dot"></span>
-
-                    <time datetime="2022-02-23">Fab 23, 2022</time>
-                  </div>
-
-                  <h3 class="h3 blog-item-title">Design conferences in 2022</h3>
-
-                  <p class="blog-text">
-                    Veritatis et quasi architecto beatae vitae dicta sunt, explicabo.
-                  </p>
-
-                </div>
-
-              </a>
-            </li>
-
-            <li class="blog-post-item">
-              <a href="#">
-
-                <figure class="blog-banner-box">
-                  <img src="./assets/images/blog-2.jpg" alt="Best fonts every designer" loading="lazy">
-                </figure>
-
-                <div class="blog-content">
-
-                  <div class="blog-meta">
-                    <p class="blog-category">Design</p>
-
-                    <span class="dot"></span>
-
-                    <time datetime="2022-02-23">Fab 23, 2022</time>
-                  </div>
-
-                  <h3 class="h3 blog-item-title">Best fonts every designer</h3>
-
-                  <p class="blog-text">
-                    Sed ut perspiciatis, nam libero tempore, cum soluta nobis est eligendi.
-                  </p>
-
-                </div>
-
-              </a>
-            </li>
-
-            <li class="blog-post-item">
-              <a href="#">
-
-                <figure class="blog-banner-box">
-                  <img src="./assets/images/blog-3.jpg" alt="Design digest #80" loading="lazy">
-                </figure>
-
-                <div class="blog-content">
-
-                  <div class="blog-meta">
-                    <p class="blog-category">Design</p>
-
-                    <span class="dot"></span>
-
-                    <time datetime="2022-02-23">Fab 23, 2022</time>
-                  </div>
-
-                  <h3 class="h3 blog-item-title">Design digest #80</h3>
-
-                  <p class="blog-text">
-                    Excepteur sint occaecat cupidatat no proident, quis nostrum exercitationem ullam corporis suscipit.
-                  </p>
-
-                </div>
-
-              </a>
-            </li>
-
-            <li class="blog-post-item">
-              <a href="#">
-
-                <figure class="blog-banner-box">
-                  <img src="./assets/images/blog-4.jpg" alt="UI interactions of the week" loading="lazy">
-                </figure>
-
-                <div class="blog-content">
-
-                  <div class="blog-meta">
-                    <p class="blog-category">Design</p>
-
-                    <span class="dot"></span>
-
-                    <time datetime="2022-02-23">Fab 23, 2022</time>
-                  </div>
-
-                  <h3 class="h3 blog-item-title">UI interactions of the week</h3>
-
-                  <p class="blog-text">
-                    Enim ad minim veniam, consectetur adipiscing elit, quis nostrud exercitation ullamco laboris nisi.
-                  </p>
-
-                </div>
-
-              </a>
-            </li>
-
-            <li class="blog-post-item">
-              <a href="#">
-
-                <figure class="blog-banner-box">
-                  <img src="./assets/images/blog-5.jpg" alt="The forgotten art of spacing" loading="lazy">
-                </figure>
-
-                <div class="blog-content">
-
-                  <div class="blog-meta">
-                    <p class="blog-category">Design</p>
-
-                    <span class="dot"></span>
-
-                    <time datetime="2022-02-23">Fab 23, 2022</time>
-                  </div>
-
-                  <h3 class="h3 blog-item-title">The forgotten art of spacing</h3>
-
-                  <p class="blog-text">
-                    Maxime placeat, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                  </p>
-
-                </div>
-
-              </a>
-            </li>
-
-            <li class="blog-post-item">
-              <a href="#">
-
-                <figure class="blog-banner-box">
-                  <img src="./assets/images/blog-6.jpg" alt="Design digest #79" loading="lazy">
-                </figure>
-
-                <div class="blog-content">
-
-                  <div class="blog-meta">
-                    <p class="blog-category">Design</p>
-
-                    <span class="dot"></span>
-
-                    <time datetime="2022-02-23">Fab 23, 2022</time>
-                  </div>
-
-                  <h3 class="h3 blog-item-title">Design digest #79</h3>
-
-                  <p class="blog-text">
-                    Optio cumque nihil impedit uo minus quod maxime placeat, velit esse cillum.
-                  </p>
-
-                </div>
-
-              </a>
-            </li>
-
-          </ul>
-
-        </section>
-
-      </article>
-
-
-
-
-
-      <!--
-        - #CONTACT
-      -->
-
-      <article class="contact" data-page="contact">
-
-        <header>
-          <h2 class="h2 article-title">Contact</h2>
-        </header>
-
-        <!-- <section class="mapbox" data-mapbox>
-          <figure>
-            <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d199666.5651251294!2d-121.58334177520186!3d38.56165006739519!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x809ac672b28397f9%3A0x921f6aaa74197fdb!2sSacramento%2C%20CA%2C%20USA!5e0!3m2!1sen!2sbd!4v1647608789441!5m2!1sen!2sbd"
-              width="400" height="300" loading="lazy"></iframe>
-          </figure>
-        </section> -->
-
-        <section class="contact-form">
-
-          <h3 class="h3 form-title">Contact Form</h3>
-
+              <h3 class="blog-item-title">UI interactions of the week</h3>
+              <p class="blog-text">Enim ad minim veniam, consectetur adipiscing elit, quis nostrud exercitation.</p>
+            </div>
+          </a>
+        </li>
+      </ul>
+    </section>
+
+    <!-- 10. CONTACT BENTO CARD -->
+    <section class="bento-card contact-card" id="contact" data-scroll-reveal>
+      <div class="card-header-wrapper">
+        <div class="card-icon-box"><ion-icon name="mail-unread-outline"></ion-icon></div>
+        <h2 class="card-title">Contact</h2>
+      </div>
+
+      <div class="contact-grid">
+        <div class="contact-form-wrapper">
+          <h3 class="form-title">Send a Message</h3>
           <form action="#" class="form" data-form>
-
             <div class="input-wrapper">
               <input type="text" name="fullname" class="form-input" placeholder="Full name" required data-form-input>
-
               <input type="email" name="email" class="form-input" placeholder="Email address" required data-form-input>
             </div>
-
             <textarea name="message" class="form-input" placeholder="Your Message" required data-form-input></textarea>
-
             <button class="form-btn" type="submit" disabled data-form-btn>
               <ion-icon name="paper-plane"></ion-icon>
               <span>Send Message</span>
             </button>
-
           </form>
-
-        </section>
-
-      </article>
-
-    </div>
+        </div>
+      </div>
+    </section>
 
   </main>
 
-
-
-
-
+  <!-- Reusable Glass Modal for Certificates -->
+  <div class="cert-modal-container" id="certModal">
+    <div class="cert-modal-overlay"></div>
+    <div class="cert-modal-content">
+      <button class="cert-modal-close" aria-label="Close modal">
+        <ion-icon name="close-outline"></ion-icon>
+      </button>
+      <figure class="cert-modal-img-box">
+        <img src="" alt="Certificate Image" id="modalCertImg">
+      </figure>
+      <div class="cert-modal-info">
+        <span class="cert-modal-cat" id="modalCertCat">Category</span>
+        <h3 class="cert-modal-title" id="modalCertTitle">Certificate Title</h3>
+        <a href="#" target="_blank" class="cert-modal-verify-btn" id="modalCertVerify">
+          <span>Verify Certificate</span>
+          <ion-icon name="open-outline"></ion-icon>
+        </a>
+      </div>
+    </div>
+  </div>
 
   <!--
     - custom js link
