@@ -245,6 +245,8 @@ Hint: You can also click the commands below if you prefer not to type.`);
       
     case 'clear':
       output.innerHTML = '';
+      printLine(asciiWelcome, "ascii-art");
+      printLine("MCA Student<br>Type 'start' to explore.", "welcome-subtitle");
       break;
       
     case 'sudo':
@@ -394,3 +396,14 @@ closeModal.addEventListener('click', hideModal);
 modal.addEventListener('click', (e) => {
   if (e.target === modal) hideModal();
 });
+
+// Live Clock ticking logic
+const updateClock = () => {
+  const clock = document.getElementById('live-clock');
+  if (!clock) return;
+  const now = new Date();
+  const timeString = now.toLocaleTimeString([], { hour12: false });
+  clock.textContent = `[${timeString}]`;
+};
+setInterval(updateClock, 1000);
+updateClock(); // Initial run

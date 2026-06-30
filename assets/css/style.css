@@ -153,6 +153,14 @@ body {
   font-weight: bold;
 }
 
+.clock-text {
+  color: #888888;
+  font-size: 13px;
+  margin-right: 12px;
+  letter-spacing: 0.5px;
+  font-family: inherit;
+}
+
 #terminal {
   flex-grow: 1;
   padding: 20px;
@@ -267,22 +275,26 @@ body {
 
 .cmd-btn {
   background: transparent;
-  border: 1px solid var(--text-color);
+  border: 1px solid rgba(57, 255, 20, 0.4);
   color: var(--text-color);
-  padding: 4px 10px;
-  margin: 4px 4px;
+  padding: 5px 12px;
+  margin: 4px;
   cursor: pointer;
   font-family: inherit;
   font-size: 14px;
-  transition: all 0.2s;
+  border-radius: 4px;
+  transition: all 0.3s ease;
   text-shadow: 0 0 5px var(--glow-color);
-  box-shadow: 0 0 5px var(--glow-color);
+  box-shadow: inset 0 0 5px rgba(57, 255, 20, 0.1), 0 0 5px rgba(57, 255, 20, 0.15);
 }
 
 .cmd-btn:hover {
-  background: var(--text-color);
-  color: #000;
-  box-shadow: 0 0 15px var(--glow-color);
+  background: rgba(57, 255, 20, 0.1);
+  border-color: var(--text-color);
+  color: var(--text-color);
+  box-shadow: 0 0 15px var(--glow-color), inset 0 0 8px rgba(57, 255, 20, 0.3);
+  text-shadow: 0 0 8px var(--text-color);
+  transform: translateY(-1px);
 }
 
 /* Syntax Highlighting */
