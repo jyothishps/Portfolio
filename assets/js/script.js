@@ -1,248 +1,396 @@
 'use strict';
 
-// Element toggle function
-const elementToggleFunc = function (elem) { elem.classList.toggle("active"); }
+const terminal = document.getElementById('terminal');
+const output = document.getElementById('output');
+const input = document.getElementById('cmd-input');
+const inputLine = document.getElementById('input-line');
 
-// Mobile Navigation Toggle
-const header = document.querySelector(".header");
-const navToggleBtn = document.querySelector("[data-nav-toggle-btn]");
-const navbar = document.querySelector(".navbar");
-const navLinks = document.querySelectorAll("[data-nav-link]");
+// Focus input whenever terminal is clicked
+document.addEventListener('click', () => {
+  input.focus();
+});
 
-if (navToggleBtn) {
-  navToggleBtn.addEventListener("click", function () {
-    elementToggleFunc(header);
-    elementToggleFunc(navbar);
-  });
-}
+// Data
+const data = {
+  about: `Hello! I am Jyothish P S.
+I'm an MCA graduate who enjoys turning ideas into real-world solutions through technology.
+I'm passionate about building software, exploring AI/ML, and continuously learning new skills.
+Location: Kerala, India (Perumbavoor, Ernakulam)
+Birthday: January 8, 2005`,
 
-// Close mobile navbar on nav link click
-for (let i = 0; i < navLinks.length; i++) {
-  navLinks[i].addEventListener("click", function () {
-    header.classList.remove("active");
-    navbar.classList.remove("active");
-  });
-}
+  skills: `=== TECHNICAL SKILLS ===
+[Frontend & Design]
+- HTML5/CSS3   [█████████░] 90%
+- Bootstrap    [████████░░] 80%
+- Canva        [███████░░░] 70%
 
-// Custom Select / Filter for Credentials
-const select = document.querySelector("[data-select]");
-const selectItems = document.querySelectorAll("[data-select-item]");
-const selectValue = document.querySelector("[data-selecct-value]");
-const filterBtn = document.querySelectorAll("[data-filter-btn]");
-const filterItems = document.querySelectorAll("[data-filter-item]");
+[Backend & Programming]
+- Python       [█████████░] 90%
+- Django       [████████░░] 80%
+- C/C++        [████████░░] 80%
+- PHP          [███████░░░] 70%`,
 
-if (select) {
-  select.addEventListener("click", function () { elementToggleFunc(this); });
-}
+  experience: `=== EXPERIENCE ===
+[AI ML Intern]
+Elixir Softwares, Kaloor
+May 2026 - July 2026
 
-// Add event in all select items for mobile dropdown
-for (let i = 0; i < selectItems.length; i++) {
-  selectItems[i].addEventListener("click", function () {
-    let selectedValue = this.innerText.toLowerCase();
-    if (selectValue) selectValue.innerText = this.innerText;
-    elementToggleFunc(select);
-    filterFunc(selectedValue);
-  });
-}
+[Python Django Intern]
+Progressive Software Solutions, Muvattupuzha
+Dec 2024 - Apr 2025`,
 
-// Filter function
-const filterFunc = function (selectedValue) {
-  for (let i = 0; i < filterItems.length; i++) {
-    if (selectedValue === "all") {
-      filterItems[i].classList.add("active");
-    } else if (selectedValue === filterItems[i].dataset.category) {
-      filterItems[i].classList.add("active");
+  education: `=== EDUCATION ===
+[Master of Computer Applications]
+MACE, Kothamangalam (2025 - 2027)
+
+[Bachelor of Computer Applications]
+Nirmala College, Muvattupuzha (2022 - 2025)
+
+[Plus Two - Computer Science]
+MGM HSS, Kuruppampady (2020 - 2022)`,
+
+  contact: `=== CONTACT INFO ===
+Email:    <a href="mailto:jyothishparachalil@gmail.com">jyothishparachalil@gmail.com</a>
+Phone:    <a href="tel:+919539728117">+91 953 972 8117</a>
+LinkedIn: <a href="https://www.linkedin.com/in/jyothish-p-s-672057241/" target="_blank">linkedin.com/in/jyothish-p-s-672057241/</a>
+GitHub:   <a href="https://github.com/jyothishps" target="_blank">github.com/jyothishps</a>
+Instagram:<a href="https://www.instagram.com/j__y_o_t_h_i_s__h/" target="_blank">@j__y_o_t_h_i_s__h</a>`,
+
+  credentials: `=== CERTIFICATIONS ===
+- <a href="#" onclick="showCert('privacy-nptel.png', 'Privacy and Security in Online Social Media (NPTEL)'); return false;">Privacy and Security in Online Social Media (NPTEL)</a>
+- <a href="#" onclick="showCert('dbms.png', 'Database Management System (NPTEL)'); return false;">Database Management System (NPTEL)</a>
+- <a href="#" onclick="showCert('c.png', 'Problem solving through programming in C (NPTEL)'); return false;">Problem solving through programming in C (NPTEL)</a>
+- <a href="#" onclick="showCert('introPy.png', 'Introduction to Python (DataCamp)'); return false;">Introduction to Python (DataCamp)</a>
+- <a href="#" onclick="showCert('intermediatePy.png', 'Intermediate Python (DataCamp)'); return false;">Intermediate Python (DataCamp)</a>
+- <a href="#" onclick="showCert('tcs.png', 'TCS iON Career Edge (TCS iON)'); return false;">TCS iON Career Edge (TCS iON)</a>
+- <a href="#" onclick="showCert('freeCodeCamp.png', 'Responsive Web Design (freeCodeCamp)'); return false;">Responsive Web Design (freeCodeCamp)</a>
+- <a href="#" onclick="showCert('excel.png', 'Advanced Excel (ICT Academy of Kerala)'); return false;">Advanced Excel (ICT Academy of Kerala)</a>`,
+
+  projects: `=== MY PROJECTS ===
+- <a href="#" onclick="showImage('project-1.jpg', 'IntelliPredict AI - ML Analysis System'); return false;">IntelliPredict AI</a> (Python, Scikit-Learn)
+- <a href="#" onclick="showImage('project-2.png', 'Secure Django Portal'); return false;">Secure Django Portal</a> (Python, Django, SQLite)
+- <a href="#" onclick="showImage('project-3.jpg', 'CLI System Scheduler'); return false;">CLI System Scheduler</a> (C++, OS Scheduling)
+- <a href="#" onclick="showImage('project-4.png', 'Responsive vCard Theme'); return false;">Responsive vCard Theme</a> (HTML5, CSS3, JS)
+- <a href="#" onclick="showImage('project-5.png', 'Database Query Tool'); return false;">Database Query Tool</a> (SQL, Python)`
+};
+
+const asciiWelcome = `
+      _             _   _     _     _       ____  ____  
+     | |           | | | |   (_)   | |     |  _ \\/ ___| 
+     | |_   _  ___ | |_| |__  _ ___| |__   | |_) \\___ \\ 
+ _   | | | | |/ _ \\| __| '_ \\| / __| '_ \\  |  __/ ___) |
+| |__| | |_| | (_) | |_| | | | \\__ \\ | | | | |   |____/ 
+ \\____/ \\__, |\\___/ \\__|_| |_|_|___/_| |_| |_|          
+         __/ |                                          
+        |___/                                           `;
+
+const printLine = (text, className = '') => {
+  const line = document.createElement('div');
+  line.className = `output-line ${className}`;
+  line.innerHTML = text; // using innerHTML to support links
+  output.appendChild(line);
+  terminal.scrollTop = terminal.scrollHeight;
+};
+
+const printEcho = (cmd) => {
+  printLine(`jyothish@portfolio:~$ ${cmd}`, 'command-echo');
+};
+
+let isTyping = false;
+
+// Typewriter effect function
+const typeLine = (text, className = '', speed = 10, callback = null) => {
+  isTyping = true;
+  const line = document.createElement('div');
+  line.className = `output-line ${className}`;
+  
+  // Syntax Highlighting Phase (applied instantly before typewriter starts)
+  let html = text;
+  if (!className.includes('error') && !className.includes('command-echo')) {
+    html = html.replace(/=== (.*?) ===/g, '<span class="hl-title">=== $1 ===</span>');
+    html = html.replace(/\[([^█░\n]*?)\]/g, '<span class="hl-bracket">[$1]</span>');
+    html = html.replace(/\[([█░]+)\]/g, '<span class="hl-bar">[$1]</span>');
+    html = html.replace(/^- (.*)/gm, '<span class="hl-bullet">- </span><span class="hl-item">$1</span>');
+  }
+  line.innerHTML = html;
+  output.appendChild(line);
+  terminal.scrollTop = terminal.scrollHeight;
+
+  // Find all text nodes recursively
+  const textNodes = [];
+  const getTextNodes = (node) => {
+    if (node.nodeType === Node.TEXT_NODE) {
+      textNodes.push(node);
     } else {
-      filterItems[i].classList.remove("active");
-    }
-  }
-}
-
-// Add click event in all filter button items for desktop/large screens
-if (filterBtn.length > 0) {
-  let lastClickedBtn = filterBtn[0];
-
-  for (let i = 0; i < filterBtn.length; i++) {
-    filterBtn[i].addEventListener("click", function () {
-      let selectedValue = this.innerText.toLowerCase();
-      if (selectValue) selectValue.innerText = this.innerText;
-      filterFunc(selectedValue);
-
-      lastClickedBtn.classList.remove("active");
-      this.classList.add("active");
-      lastClickedBtn = this;
-    });
-  }
-}
-
-// Contact form validation
-const form = document.querySelector("[data-form]");
-const formInputs = document.querySelectorAll("[data-form-input]");
-const formBtn = document.querySelector("[data-form-btn]");
-
-if (form && formInputs.length > 0 && formBtn) {
-  for (let i = 0; i < formInputs.length; i++) {
-    formInputs[i].addEventListener("input", function () {
-      // check form validation
-      if (form.checkValidity()) {
-        formBtn.removeAttribute("disabled");
-      } else {
-        formBtn.setAttribute("disabled", "");
-      }
-    });
-  }
-}
-
-// Active link on scroll (Scroll Spy) & Header transparency
-const sections = document.querySelectorAll("section[id]");
-
-window.addEventListener("scroll", function () {
-  let scrollY = window.pageYOffset;
-  
-  // Header background control
-  if (scrollY > 50) {
-    header.classList.add("scrolled");
-  } else {
-    header.classList.remove("scrolled");
-  }
-
-  // Active navigation link tracking
-  sections.forEach(current => {
-    const sectionHeight = current.offsetHeight;
-    const sectionTop = current.offsetTop - 140;
-    const sectionId = current.getAttribute("id");
-    const activeNavLink = document.querySelector(`.navbar-link[href*=${sectionId}]`);
-
-    if (activeNavLink) {
-      if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
-        document.querySelector(".navbar-link.active")?.classList.remove("active");
-        activeNavLink.classList.add("active");
+      for (let child of node.childNodes) {
+        getTextNodes(child);
       }
     }
+  };
+  getTextNodes(line);
+
+  // Store original texts and clear text nodes
+  const originalTexts = textNodes.map(node => {
+    const txt = node.textContent;
+    node.textContent = '';
+    return txt;
   });
+
+  // Animate text nodes character by character
+  let nodeIndex = 0;
+  let charIndex = 0;
+
+  const typeNextChar = () => {
+    if (nodeIndex >= textNodes.length) {
+      isTyping = false;
+      if (callback) callback();
+      return;
+    }
+
+    const currentNode = textNodes[nodeIndex];
+    const originalText = originalTexts[nodeIndex];
+
+    // Handle empty text nodes safely
+    if (originalText.length === 0) {
+      nodeIndex++;
+      typeNextChar();
+      return;
+    }
+
+    currentNode.textContent += originalText.charAt(charIndex);
+    terminal.scrollTop = terminal.scrollHeight;
+    charIndex++;
+
+    if (charIndex >= originalText.length) {
+      nodeIndex++;
+      charIndex = 0;
+    }
+
+    setTimeout(typeNextChar, speed);
+  };
+
+  typeNextChar();
+};
+
+const executeCommand = (cmd) => {
+  const cleanCmd = cmd.trim().toLowerCase();
+  
+  if (cleanCmd === '') return;
+  
+  printEcho(cleanCmd);
+
+  switch(cleanCmd) {
+    case 'start':
+      typeLine(`Available commands:
+  whoami      - Display my introduction
+  skills      - List technical skills
+  projects    - View my personal projects
+  experience  - Show work history
+  education   - Show academic background
+  credentials - Show certifications
+  contact     - Display contact information
+  clear       - Clear the terminal screen
+
+Hint: You can also click the commands below if you prefer not to type.`);
+      
+      // Inject clickable buttons for recruiters
+      setTimeout(() => {
+        const btnsDiv = document.createElement('div');
+        btnsDiv.className = 'btns-container';
+        ['whoami', 'skills', 'projects', 'experience', 'education', 'credentials', 'contact', 'clear'].forEach(c => {
+          const btn = document.createElement('button');
+          btn.className = 'cmd-btn';
+          btn.innerText = c;
+          btn.onclick = () => {
+            if (isTyping) return;
+            input.value = '';
+            executeCommand(c);
+          };
+          btnsDiv.appendChild(btn);
+        });
+        output.appendChild(btnsDiv);
+        terminal.scrollTop = terminal.scrollHeight;
+      }, 500);
+      break;
+    
+    case 'whoami':
+    case 'about':
+      typeLine(data.about);
+      break;
+      
+    case 'skills':
+      typeLine(data.skills);
+      break;
+      
+    case 'experience':
+      typeLine(data.experience);
+      break;
+      
+    case 'education':
+      typeLine(data.education);
+      break;
+
+    case 'credentials':
+    case 'certs':
+      typeLine(data.credentials);
+      break;
+      
+    case 'projects':
+      typeLine(data.projects);
+      break;
+
+    case 'contact':
+      typeLine(data.contact);
+      break;
+      
+    case 'clear':
+      output.innerHTML = '';
+      break;
+      
+    case 'sudo':
+      typeLine('nice try. This incident will be reported.', 'error');
+      break;
+      
+    default:
+      // Prevent multiple typeLines from overlapping the isTyping lock
+      isTyping = true;
+      const line1 = document.createElement('div');
+      line1.className = 'output-line error';
+      line1.textContent = `bash: ${cleanCmd}: command not found`;
+      output.appendChild(line1);
+      
+      const line2 = document.createElement('div');
+      line2.className = 'output-line';
+      line2.textContent = `Type 'start' to see a list of available commands.`;
+      output.appendChild(line2);
+      
+      terminal.scrollTop = terminal.scrollHeight;
+      isTyping = false;
+  }
+};
+
+input.addEventListener('keydown', (e) => {
+  if (e.key === 'Enter') {
+    e.preventDefault(); // Prevent default enter behavior just in case
+    if (isTyping) return; // Prevent spamming while typing
+    const cmd = input.value;
+    input.value = '';
+    executeCommand(cmd);
+  }
 });
 
-// Scroll Reveal Animation (Intersection Observer)
-const revealElements = document.querySelectorAll("[data-scroll-reveal]");
+const bootSequence = [
+  "BIOS Date 06/30/26 21:50:00 Ver 08.00.15",
+  "CPU: GenuineIntel(R) CPU @ 3.40GHz",
+  "Speed: 3.40 GHz",
+  "Press DEL to run Setup",
+  "Press F8 for BBS POPUP",
+  "Initializing USB Controllers .. Done.",
+  "2048MB OK",
+  "Auto-Detecting Pri Master..IDE Hard Disk",
+  "Auto-Detecting Pri Slave...Not Detected",
+  "Pri Master: 3.M.A WDC WD2500AAJS-00VTA0",
+  "Ultra DMA Mode-5, S.M.A.R.T. Capable and Status OK",
+  "Booting from Hard Disk...",
+  "Loading Kernel... OK",
+  "Mounting File System... OK",
+  "Bypassing Mainframe... SUCCESS"
+];
 
-const revealCallback = function (entries, observer) {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add("revealed");
-      // Stop observing once revealed to improve scroll performance
-      observer.unobserve(entry.target);
-    }
+// Boot sequence
+window.onload = () => {
+  input.disabled = true;
+  
+  let delay = 0;
+  bootSequence.forEach((line, index) => {
+    setTimeout(() => {
+      printLine(line);
+      if (index === bootSequence.length - 1) {
+        setTimeout(() => {
+          // Clear the boot logs
+          output.innerHTML = '';
+          
+          // Print the ASCII logo
+          printLine(asciiWelcome, "ascii-art");
+          
+          // Print centered welcome text
+          printLine("MCA Student<br>Type 'start' to explore.", "welcome-subtitle");
+          
+          // Show the input prompt
+          inputLine.classList.add('visible');
+          input.disabled = false;
+          input.focus();
+        }, 800);
+      }
+    }, delay);
+    // Random delay between 20ms and 150ms per line to simulate real loading
+    delay += Math.floor(Math.random() * 130) + 20; 
   });
 };
 
-const revealObserver = new IntersectionObserver(revealCallback, {
-  root: null,
-  threshold: 0.1,
-  rootMargin: "0px 0px -50px 0px"
-});
+// --- MATRIX RAIN BACKGROUND ---
+const canvas = document.getElementById('matrix-bg');
+const ctx = canvas.getContext('2d');
 
-revealElements.forEach(element => {
-  revealObserver.observe(element);
-});
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
 
-// UPGRADE 1: IST Live Clock Ticker
-function updateClock() {
-  const clockEl = document.getElementById("live-clock");
-  if (!clockEl) return;
-  
-  // Calculate UTC time, then offset by 5.5 hours for IST
-  const now = new Date();
-  const utc = now.getTime() + (now.getTimezoneOffset() * 60000);
-  const ist = new Date(utc + (3600000 * 5.5));
-  
-  let hours = ist.getHours();
-  let minutes = ist.getMinutes();
-  let seconds = ist.getSeconds();
-  let ampm = hours >= 12 ? 'PM' : 'AM';
-  
-  hours = hours % 12;
-  hours = hours ? hours : 12; // the hour '0' should be '12'
-  minutes = minutes < 10 ? '0' + minutes : minutes;
-  seconds = seconds < 10 ? '0' + seconds : seconds;
-  
-  clockEl.textContent = `${hours}:${minutes}:${seconds} ${ampm}`;
-}
-setInterval(updateClock, 1000);
-updateClock(); // Initial call
+const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%^&*]*'.split('');
+const fontSize = 14;
+const columns = canvas.width / fontSize;
 
-// UPGRADE 2: Theme Selector Switcher
-const themeButtons = document.querySelectorAll(".theme-btn");
-themeButtons.forEach(btn => {
-  btn.addEventListener("click", function() {
-    const theme = this.dataset.theme;
-    
-    // Set active button
-    themeButtons.forEach(b => b.classList.remove("active"));
-    this.classList.add("active");
-    
-    // Apply to body
-    document.body.classList.remove("oled-theme", "violet-theme");
-    if (theme === "oled") document.body.classList.add("oled-theme");
-    if (theme === "violet") document.body.classList.add("violet-theme");
-    
-    localStorage.setItem("selected-theme", theme);
-  });
-});
-
-// Load saved theme preference
-const savedTheme = localStorage.getItem("selected-theme");
-if (savedTheme) {
-  const targetBtn = document.querySelector(`.theme-btn[data-theme="${savedTheme}"]`);
-  if (targetBtn) targetBtn.click();
+const drops = [];
+for (let x = 0; x < columns; x++) {
+  drops[x] = 1;
 }
 
-// UPGRADE 3: Frosted Glass Certificate Modals
-const certItems = document.querySelectorAll(".project-item");
-const certModal = document.getElementById("certModal");
-const modalImg = document.getElementById("modalCertImg");
-const modalCat = document.getElementById("modalCertCat");
-const modalTitle = document.getElementById("modalCertTitle");
-const modalVerify = document.getElementById("modalCertVerify");
-const modalClose = document.querySelector(".cert-modal-close");
-const modalOverlay = document.querySelector(".cert-modal-overlay");
-
-certItems.forEach(item => {
-  const link = item.querySelector("a");
-  if (!link) return;
-
-  link.addEventListener("click", function(e) {
-    e.preventDefault(); // Prevent jump behavior
+function drawMatrix() {
+  ctx.fillStyle = 'rgba(5, 5, 5, 0.05)';
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+  
+  ctx.fillStyle = '#0F0';
+  ctx.font = fontSize + 'px monospace';
+  
+  for (let i = 0; i < drops.length; i++) {
+    const text = letters[Math.floor(Math.random() * letters.length)];
+    ctx.fillText(text, i * fontSize, drops[i] * fontSize);
     
-    const title = item.dataset.certTitle;
-    const cat = item.dataset.certCategory;
-    const img = item.dataset.certImg;
-    const verify = item.dataset.certVerify;
-
-    if (modalImg) modalImg.src = img;
-    if (modalCat) modalCat.textContent = cat;
-    if (modalTitle) modalTitle.textContent = title;
-    if (modalVerify) {
-      modalVerify.href = verify;
-      if (!verify || verify === "#") {
-        modalVerify.style.display = "none";
-      } else {
-        modalVerify.style.display = "flex";
-      }
+    if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+      drops[i] = 0;
     }
+    drops[i]++;
+  }
+}
 
-    if (certModal) certModal.classList.add("active");
-  });
+setInterval(drawMatrix, 33);
+
+let lastWidth = window.innerWidth;
+window.addEventListener('resize', () => {
+  if (window.innerWidth !== lastWidth) {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    lastWidth = window.innerWidth;
+  }
 });
 
-const closeCertModal = function() {
-  if (certModal) certModal.classList.remove("active");
+// Certificate Modal Logic
+const modal = document.getElementById('cert-modal');
+const modalImg = document.getElementById('modal-img');
+const modalTitle = document.getElementById('modal-title');
+const closeModal = document.querySelector('.close-modal');
+
+window.showCert = (imgName, certTitle) => {
+  modalImg.src = `./assets/images/${imgName}`;
+  modalTitle.textContent = certTitle;
+  modal.classList.add('visible');
+};
+window.showImage = window.showCert;
+
+const hideModal = () => {
+  modal.classList.remove('visible');
 };
 
-if (modalClose) modalClose.addEventListener("click", closeCertModal);
-if (modalOverlay) modalOverlay.addEventListener("click", closeCertModal);
-// Close modal on Esc key press
-window.addEventListener("keydown", function(e) {
-  if (e.key === "Escape") {
-    closeCertModal();
-  }
+closeModal.addEventListener('click', hideModal);
+modal.addEventListener('click', (e) => {
+  if (e.target === modal) hideModal();
 });
