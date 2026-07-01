@@ -5,9 +5,179 @@ const output = document.getElementById('output');
 const input = document.getElementById('cmd-input');
 const inputLine = document.getElementById('input-line');
 
+// SoundFX synthesis class using Web Audio API
+class SoundFX {
+  constructor() {
+    this.ctx = null;
+    this.enabled = true; // Enabled by default
+    this.initialized = false;
+  }
+
+  init() {
+    if (this.initialized) return;
+    try {
+      const AudioContext = window.AudioContext || window.webkitAudioContext;
+      this.ctx = new AudioContext();
+      this.initialized = true;
+    } catch (e) {
+      console.warn("Web Audio API not supported", e);
+    }
+  }
+
+  resume() {
+    if (this.ctx && this.ctx.state === 'suspended') {
+      this.ctx.resume();
+    }
+  }
+
+  playKeystroke() {
+    this.init();
+    if (!this.initialized || !this.enabled || !this.ctx) return;
+    this.resume();
+
+    const t = this.ctx.currentTime;
+    const osc = this.ctx.createOscillator();
+    const gain = this.ctx.createGain();
+    const filter = this.ctx.createBiquadFilter();
+
+    filter.type = 'bandpass';
+    filter.frequency.setValueAtTime(1000 + Math.random() * 400, t);
+    filter.Q.setValueAtTime(5, t);
+
+    const pitch = 600 + Math.random() * 500;
+    osc.frequency.setValueAtTime(pitch, t);
+    osc.type = 'sine';
+
+    const duration = 0.035 + Math.random() * 0.015; // ~35-50ms
+    gain.gain.setValueAtTime(0, t);
+    gain.gain.linearRampToValueAtTime(0.12, t + 0.002);
+    gain.gain.exponentialRampToValueAtTime(0.0001, t + duration);
+
+    osc.connect(filter);
+    filter.connect(gain);
+    gain.connect(this.ctx.destination);
+
+    osc.start(t);
+    osc.stop(t + duration + 0.01);
+  }
+
+  playPrintTick() {
+    this.init();
+    if (!this.initialized || !this.enabled || !this.ctx) return;
+    this.resume();
+
+    const t = this.ctx.currentTime;
+    const osc = this.ctx.createOscillator();
+    const gain = this.ctx.createGain();
+    const filter = this.ctx.createBiquadFilter();
+
+    filter.type = 'bandpass';
+    filter.frequency.setValueAtTime(2600 + Math.random() * 400, t);
+    filter.Q.setValueAtTime(8, t);
+
+    const pitch = 1300 + Math.random() * 300;
+    osc.frequency.setValueAtTime(pitch, t);
+    osc.type = 'triangle';
+
+    const duration = 0.015 + Math.random() * 0.01; // ~15-25ms
+    gain.gain.setValueAtTime(0, t);
+    gain.gain.linearRampToValueAtTime(0.08, t + 0.001);
+    gain.gain.exponentialRampToValueAtTime(0.0001, t + duration);
+
+    osc.connect(filter);
+    filter.connect(gain);
+    gain.connect(this.ctx.destination);
+
+    osc.start(t);
+    osc.stop(t + duration + 0.01);
+  }
+
+  playEnter() {
+    this.init();
+    if (!this.initialized || !this.enabled || !this.ctx) return;
+    this.resume();
+
+    // Heavier double click sound for enter
+    this.playKeystrokeWithPitch(350, 0.06, 0.16);
+    setTimeout(() => {
+      this.playKeystrokeWithPitch(250, 0.08, 0.12);
+    }, 15);
+  }
+
+  playClick() {
+    this.init();
+    if (!this.initialized || !this.enabled || !this.ctx) return;
+    this.resume();
+
+    // High pitched retro UI confirmation chirp
+    const t = this.ctx.currentTime;
+    const osc = this.ctx.createOscillator();
+    const gain = this.ctx.createGain();
+
+    osc.frequency.setValueAtTime(1600, t);
+    osc.frequency.exponentialRampToValueAtTime(700, t + 0.06);
+    osc.type = 'sine';
+
+    gain.gain.setValueAtTime(0, t);
+    gain.gain.linearRampToValueAtTime(0.06, t + 0.002);
+    gain.gain.exponentialRampToValueAtTime(0.0001, t + 0.08);
+
+    osc.connect(gain);
+    gain.connect(this.ctx.destination);
+
+    osc.start(t);
+    osc.stop(t + 0.09);
+  }
+
+  playKeystrokeWithPitch(frequency, duration, volume) {
+    if (!this.initialized || !this.enabled || !this.ctx) return;
+    const t = this.ctx.currentTime;
+    const osc = this.ctx.createOscillator();
+    const gain = this.ctx.createGain();
+    const filter = this.ctx.createBiquadFilter();
+
+    filter.type = 'bandpass';
+    filter.frequency.setValueAtTime(frequency * 1.5, t);
+    filter.Q.setValueAtTime(4, t);
+
+    osc.frequency.setValueAtTime(frequency, t);
+    osc.type = 'sine';
+
+    gain.gain.setValueAtTime(0, t);
+    gain.gain.linearRampToValueAtTime(volume, t + 0.003);
+    gain.gain.exponentialRampToValueAtTime(0.0001, t + duration);
+
+    osc.connect(filter);
+    filter.connect(gain);
+    gain.connect(this.ctx.destination);
+
+    osc.start(t);
+    osc.stop(t + duration + 0.01);
+  }
+
+  toggle() {
+    this.init();
+    this.enabled = !this.enabled;
+    return this.enabled;
+  }
+}
+
+const soundFX = new SoundFX();
+
 // Focus input whenever terminal is clicked
-document.addEventListener('click', () => {
-  input.focus();
+document.addEventListener('click', (e) => {
+  // Initialize and resume Web Audio Context on first user click
+  soundFX.init();
+  soundFX.resume();
+
+  // Focus input if click was not on an interactive element
+  if (e.target.tagName !== 'INPUT' && 
+      e.target.tagName !== 'BUTTON' && 
+      e.target.tagName !== 'A' && 
+      !e.target.closest('.modal') &&
+      !e.target.closest('.sound-btn')) {
+    input.focus();
+  }
 });
 
 // Data
@@ -90,6 +260,9 @@ const printLine = (text, className = '') => {
   line.innerHTML = text; // using innerHTML to support links
   output.appendChild(line);
   terminal.scrollTop = terminal.scrollHeight;
+  
+  // Play sound effect for lines printed instantly
+  soundFX.playPrintTick();
 };
 
 const printEcho = (cmd) => {
@@ -157,8 +330,15 @@ const typeLine = (text, className = '', speed = 10, callback = null) => {
       return;
     }
 
-    currentNode.textContent += originalText.charAt(charIndex);
+    const char = originalText.charAt(charIndex);
+    currentNode.textContent += char;
     terminal.scrollTop = terminal.scrollHeight;
+
+    // Play tick sound for characters typed (excluding newlines/extra whitespace)
+    if (char !== '\n' && char !== '\r' && char.trim() !== '') {
+      soundFX.playPrintTick();
+    }
+
     charIndex++;
 
     if (charIndex >= originalText.length) {
@@ -203,6 +383,7 @@ Hint: You can also click the commands below if you prefer not to type.`);
           btn.innerText = c;
           btn.onclick = () => {
             if (isTyping) return;
+            soundFX.playClick();
             input.value = '';
             executeCommand(c);
           };
@@ -272,12 +453,26 @@ Hint: You can also click the commands below if you prefer not to type.`);
 };
 
 input.addEventListener('keydown', (e) => {
+  // Initialize and resume AudioContext on first user keydown
+  soundFX.init();
+  soundFX.resume();
+
   if (e.key === 'Enter') {
     e.preventDefault(); // Prevent default enter behavior just in case
     if (isTyping) return; // Prevent spamming while typing
     const cmd = input.value;
     input.value = '';
+    soundFX.playEnter();
     executeCommand(cmd);
+  } else {
+    // Exclude modifiers and system keys to avoid double click sound on shifting, command lines, arrow navigation, etc.
+    const ignoredKeys = [
+      'Shift', 'Control', 'Alt', 'Meta', 'CapsLock', 'Tab', 'Escape',
+      'ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'Home', 'End', 'PageUp', 'PageDown'
+    ];
+    if (!ignoredKeys.includes(e.key)) {
+      soundFX.playKeystroke();
+    }
   }
 });
 
@@ -382,6 +577,7 @@ const modalTitle = document.getElementById('modal-title');
 const closeModal = document.querySelector('.close-modal');
 
 window.showCert = (imgName, certTitle) => {
+  soundFX.playClick();
   modalImg.src = `./assets/images/${imgName}`;
   modalTitle.textContent = certTitle;
   modal.classList.add('visible');
@@ -389,6 +585,7 @@ window.showCert = (imgName, certTitle) => {
 window.showImage = window.showCert;
 
 const hideModal = () => {
+  soundFX.playClick();
   modal.classList.remove('visible');
 };
 
@@ -396,6 +593,24 @@ closeModal.addEventListener('click', hideModal);
 modal.addEventListener('click', (e) => {
   if (e.target === modal) hideModal();
 });
+
+// Sound Toggle Button listener
+const soundToggleBtn = document.getElementById('sound-toggle');
+if (soundToggleBtn) {
+  soundToggleBtn.addEventListener('click', (e) => {
+    e.stopPropagation(); // Avoid triggering document click
+    const isSoundOn = soundFX.toggle();
+    if (isSoundOn) {
+      soundToggleBtn.textContent = '🔊';
+      soundToggleBtn.classList.remove('muted');
+      soundFX.playClick();
+    } else {
+      soundToggleBtn.textContent = '🔇';
+      soundToggleBtn.classList.add('muted');
+    }
+    input.focus();
+  });
+}
 
 // Live Clock ticking logic
 const updateClock = () => {
