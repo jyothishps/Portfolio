@@ -1020,6 +1020,7 @@ section {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   gap: 24px;
+  justify-content: center;
 }
 
 .project-card {
@@ -1028,6 +1029,9 @@ section {
   height: 100%;
   overflow: hidden;
   cursor: pointer;
+  max-width: 380px;
+  width: 100%;
+  margin: 0 auto;
 }
 
 .project-image-box {
@@ -1044,6 +1048,12 @@ section {
   height: 100%;
   object-fit: cover;
   transition: transform var(--transition-normal);
+}
+
+#certifications .project-image-box img {
+  object-fit: contain;
+  background: #020306;
+  padding: 12px;
 }
 
 .project-card:hover .project-image-box img {
@@ -1493,6 +1503,8 @@ footer {
     bottom: 20px;
     gap: 12px;
     justify-content: center;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
   }
   
   .nav-link {
@@ -1544,5 +1556,22 @@ footer {
 @media (max-width: 480px) {
   :root {
     --avatar-size: 180px;
+  }
+}
+
+@media (max-width: 400px) {
+  .nav-dock {
+    gap: 6px;
+    padding: 8px 12px;
+    max-width: 95%;
+  }
+
+  .nav-link {
+    width: 38px;
+    height: 38px;
+  }
+
+  .nav-link ion-icon {
+    font-size: 18px;
   }
 }
