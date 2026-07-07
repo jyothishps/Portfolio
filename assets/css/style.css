@@ -874,6 +874,111 @@ section {
   color: var(--text-secondary);
 }
 
+/* Interactive Timeline Expansion additions */
+.timeline-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  cursor: pointer;
+  user-select: none;
+}
+
+.timeline-header-row .timeline-title-block {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.timeline-toggle-icon {
+  font-size: 20px;
+  color: var(--text-muted);
+  transition: transform var(--transition-normal), color var(--transition-fast);
+  margin-left: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid var(--border-glass);
+}
+
+.timeline-item:hover .timeline-toggle-icon {
+  color: var(--accent-indigo);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.timeline-item.expanded .timeline-toggle-icon {
+  transform: rotate(180deg);
+  color: var(--accent-cyan);
+  background: rgba(6, 182, 212, 0.1);
+  border-color: rgba(6, 182, 212, 0.2);
+}
+
+/* CSS Grid Transition for Smooth Height */
+.timeline-expandable {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows var(--transition-normal);
+}
+
+.timeline-item.expanded .timeline-expandable {
+  grid-template-rows: 1fr;
+}
+
+.timeline-expandable-content {
+  overflow: hidden;
+}
+
+.timeline-highlights {
+  margin-top: 15px;
+  padding-top: 15px;
+  border-top: 1px dashed rgba(255, 255, 255, 0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.timeline-bullet-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.timeline-bullet-item {
+  font-size: 13.5px;
+  color: var(--text-secondary);
+  position: relative;
+  padding-left: 18px;
+  line-height: 1.5;
+}
+
+.timeline-bullet-item::before {
+  content: '▹';
+  position: absolute;
+  left: 0;
+  color: var(--accent-cyan);
+  font-weight: bold;
+}
+
+.timeline-tech-box {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 10px;
+}
+
+/* Loading Spin Animation for CV button */
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.spin-anim {
+  animation: spin 1s linear infinite;
+  display: inline-block;
+}
+
 /* --- Projects Section --- */
 .filter-tabs {
   display: flex;

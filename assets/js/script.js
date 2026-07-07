@@ -350,4 +350,54 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // --- 11. INTERACTIVE TIMELINE EXPANSION ---
+  window.toggleTimelineItem = (headerEl) => {
+    const item = headerEl.closest('.timeline-item');
+    if (!item) return;
+    
+    // Collapse other open items in the same container for clean accordion effect
+    const container = item.closest('.timeline-container');
+    const siblingItems = container.querySelectorAll('.timeline-item');
+    siblingItems.forEach(sib => {
+      if (sib !== item && sib.classList.contains('expanded')) {
+        sib.classList.remove('expanded');
+      }
+    });
+
+    item.classList.toggle('expanded');
+  };
+
+  // --- 12. RESUME DOWNLOAD ANIMATION ---
+  const downloadBtn = document.getElementById('download-cv-btn');
+  if (downloadBtn) {
+    downloadBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      
+      if (downloadBtn.classList.contains('loading')) return;
+
+      const originalContent = downloadBtn.innerHTML;
+      const fileUrl = downloadBtn.getAttribute('href') || 'Jyothish P S.pdf';
+      
+      downloadBtn.classList.add('loading');
+      downloadBtn.innerHTML = `<ion-icon name="sync-outline" class="spin-anim"></ion-icon> <span>Preparing CV...</span>`;
+
+      setTimeout(() => {
+        downloadBtn.innerHTML = `<ion-icon name="checkmark-circle-outline"></ion-icon> <span>Downloaded!</span>`;
+        
+        // Trigger file download using the actual href
+        const link = document.createElement('a');
+        link.href = fileUrl;
+        link.download = fileUrl.split('/').pop();
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+
+        setTimeout(() => {
+          downloadBtn.classList.remove('loading');
+          downloadBtn.innerHTML = originalContent;
+        }, 2000);
+      }, 1500);
+    });
+  }
+
 });

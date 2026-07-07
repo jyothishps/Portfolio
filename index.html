@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Jyothish P S | Portfolio</title>
+  <title>Jyothish P S</title>
 
   <!-- favicon -->
   <link rel="shortcut icon" href="./assets/images/logo.ico" type="image/x-icon">
@@ -68,7 +68,7 @@
     <section id="home" class="hero-section">
       <div class="hero-grid">
         <div class="hero-content reveal active">
-          <div class="hero-tag">Available for Internships & Projects</div>
+          <!-- <div class="hero-tag">Available for Internships & Projects</div> -->
           <h1 class="hero-title">
             Hi, I'm <span class="gradient-text">Jyothish P S</span>
           </h1>
@@ -83,7 +83,10 @@
               <span>View Projects</span>
               <ion-icon name="arrow-forward-outline"></ion-icon>
             </a>
-            <a href="#contact" class="btn btn-secondary">Contact Me</a>
+            <a href="Jyothish P S.pdf" class="btn btn-secondary" id="download-cv-btn">
+              <ion-icon name="download-outline"></ion-icon>
+              <span>Download CV</span>
+            </a>
           </div>
           <div class="hero-socials">
             <a href="https://github.com/jyothishps" target="_blank" class="social-icon-btn" aria-label="GitHub">
@@ -304,22 +307,73 @@
             Professional <span>Experience</span>
           </h3>
           <div class="timeline-container">
+            <!-- Experience Item 1 -->
             <div class="glass-card timeline-item">
-              <span class="timeline-badge">May 2026 - July 2026</span>
-              <h4 class="timeline-item-title">AI / ML Intern</h4>
-              <p class="timeline-subtitle">Elixir Softwares, Kaloor</p>
-              <p class="timeline-text">
-                Assisted in designing intelligent machine learning analysis systems. Developed data processing pipelines and explored classification/regression techniques for prediction analysis.
+              <div class="timeline-header-row" onclick="toggleTimelineItem(this)">
+                <div class="timeline-title-block">
+                  <span class="timeline-badge">May 2026 - July 2026</span>
+                  <h4 class="timeline-item-title">AI / ML Intern</h4>
+                  <p class="timeline-subtitle">Elixir Softwares, Kaloor</p>
+                </div>
+                <div class="timeline-toggle-icon">
+                  <ion-icon name="chevron-down-outline"></ion-icon>
+                </div>
+              </div>
+              <p class="timeline-text" style="margin-top: 8px;">
+                Assisted in designing intelligent machine learning analysis systems.
               </p>
+              <div class="timeline-expandable">
+                <div class="timeline-expandable-content">
+                  <div class="timeline-highlights">
+                    <ul class="timeline-bullet-list">
+                      <li class="timeline-bullet-item">Built automated data processing pipelines for outlier removal and statistical cleaning.</li>
+                      <li class="timeline-bullet-item">Trained classification and regression models performing comprehensive predictive analytics.</li>
+                      <li class="timeline-bullet-item">Evaluated model statistics using precision-recall metrics and confusion matrix distributions.</li>
+                    </ul>
+                    <div class="timeline-tech-box">
+                      <span class="tech-tag">Python</span>
+                      <span class="tech-tag">Scikit-Learn</span>
+                      <span class="tech-tag">Pandas</span>
+                      <span class="tech-tag">NumPy</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
 
+            <!-- Experience Item 2 -->
             <div class="glass-card timeline-item">
-              <span class="timeline-badge">Dec 2024 - Apr 2025</span>
-              <h4 class="timeline-item-title">Python Django Intern</h4>
-              <p class="timeline-subtitle">Progressive Software Solutions, Muvattupuzha</p>
-              <p class="timeline-text">
-                Designed secure backend APIs, integrated relational databases, and built administration dashboards. Focused on enhancing platform security and user access control models.
+              <div class="timeline-header-row" onclick="toggleTimelineItem(this)">
+                <div class="timeline-title-block">
+                  <span class="timeline-badge">Dec 2024 - Apr 2025</span>
+                  <h4 class="timeline-item-title">Python Django Intern</h4>
+                  <p class="timeline-subtitle">Progressive Software Solutions, Muvattupuzha</p>
+                </div>
+                <div class="timeline-toggle-icon">
+                  <ion-icon name="chevron-down-outline"></ion-icon>
+                </div>
+              </div>
+              <p class="timeline-text" style="margin-top: 8px;">
+                Designed secure backend APIs, integrated relational databases, and built administration dashboards.
               </p>
+              <div class="timeline-expandable">
+                <div class="timeline-expandable-content">
+                  <div class="timeline-highlights">
+                    <ul class="timeline-bullet-list">
+                      <li class="timeline-bullet-item">Engineered robust Django REST APIs with custom middleware authentication handlers.</li>
+                      <li class="timeline-bullet-item">Optimized SQLite query patterns, reducing database response times on nested structures.</li>
+                      <li class="timeline-bullet-item">Designed responsive administrative dashboards utilizing Bootstrap grids and custom flex-boxes.</li>
+                    </ul>
+                    <div class="timeline-tech-box">
+                      <span class="tech-tag">Django</span>
+                      <span class="tech-tag">Python</span>
+                      <span class="tech-tag">SQLite</span>
+                      <span class="tech-tag">REST APIs</span>
+                      <span class="tech-tag">Bootstrap</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -331,31 +385,105 @@
             Academic <span>Background</span>
           </h3>
           <div class="timeline-container">
+            <!-- Education Item 1 -->
             <div class="glass-card timeline-item">
-              <span class="timeline-badge">2025 - 2027</span>
-              <h4 class="timeline-item-title">Master of Computer Applications (MCA)</h4>
-              <p class="timeline-subtitle">MACE, Kothamangalam</p>
-              <p class="timeline-text">
-                Deepening knowledge in advanced computer science architectures, software design principles, cloud computing, and advanced AI methodologies.
+              <div class="timeline-header-row" onclick="toggleTimelineItem(this)">
+                <div class="timeline-title-block">
+                  <span class="timeline-badge">2025 - 2027</span>
+                  <h4 class="timeline-item-title">Master of Computer Applications (MCA)</h4>
+                  <p class="timeline-subtitle">MACE, Kothamangalam</p>
+                </div>
+                <div class="timeline-toggle-icon">
+                  <ion-icon name="chevron-down-outline"></ion-icon>
+                </div>
+              </div>
+              <p class="timeline-text" style="margin-top: 8px;">
+                Deepening knowledge in advanced computer science architectures, software design, and AI.
               </p>
+              <div class="timeline-expandable">
+                <div class="timeline-expandable-content">
+                  <div class="timeline-highlights">
+                    <ul class="timeline-bullet-list">
+                      <li class="timeline-bullet-item">Focusing on Advanced Algorithms, Cloud Computing, and Machine Learning systems.</li>
+                      <li class="timeline-bullet-item">Participating in collegiate hackathons and developing responsive web applications.</li>
+                      <li class="timeline-bullet-item">Coordinating student tech seminars and managing computer lab operational schedules.</li>
+                    </ul>
+                    <div class="timeline-tech-box">
+                      <span class="tech-tag">Algorithms</span>
+                      <span class="tech-tag">Software Engineering</span>
+                      <span class="tech-tag">AI / ML</span>
+                      <span class="tech-tag">Cloud</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
 
+            <!-- Education Item 2 -->
             <div class="glass-card timeline-item">
-              <span class="timeline-badge">2022 - 2025</span>
-              <h4 class="timeline-item-title">Bachelor of Computer Applications (BCA)</h4>
-              <p class="timeline-subtitle">Nirmala College, Muvattupuzha</p>
-              <p class="timeline-text">
-                Built foundational capabilities in algorithm optimization, relational database designs, system operations, and standard object-oriented development.
+              <div class="timeline-header-row" onclick="toggleTimelineItem(this)">
+                <div class="timeline-title-block">
+                  <span class="timeline-badge">2022 - 2025</span>
+                  <h4 class="timeline-item-title">Bachelor of Computer Applications (BCA)</h4>
+                  <p class="timeline-subtitle">Nirmala College, Muvattupuzha</p>
+                </div>
+                <div class="timeline-toggle-icon">
+                  <ion-icon name="chevron-down-outline"></ion-icon>
+                </div>
+              </div>
+              <p class="timeline-text" style="margin-top: 8px;">
+                Built foundational capabilities in algorithm optimization and database designs.
               </p>
+              <div class="timeline-expandable">
+                <div class="timeline-expandable-content">
+                  <div class="timeline-highlights">
+                    <ul class="timeline-bullet-list">
+                      <li class="timeline-bullet-item">Successfully completed relational database design projects using SQL Server.</li>
+                      <li class="timeline-bullet-item">Elected Association Secretary; led organizational efforts for national-level tech fests.</li>
+                      <li class="timeline-bullet-item">Maintained a high CGPA of 9.4/10, ranking in the department top tier.</li>
+                    </ul>
+                    <div class="timeline-tech-box">
+                      <span class="tech-tag">DBMS</span>
+                      <span class="tech-tag">Java</span>
+                      <span class="tech-tag">SQL</span>
+                      <span class="tech-tag">Systems Analysis</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
 
+            <!-- Education Item 3 -->
             <div class="glass-card timeline-item">
-              <span class="timeline-badge">2020 - 2022</span>
-              <h4 class="timeline-item-title">Plus Two (Computer Science)</h4>
-              <p class="timeline-subtitle">MGM HSS, Kuruppampady</p>
-              <p class="timeline-text">
+              <div class="timeline-header-row" onclick="toggleTimelineItem(this)">
+                <div class="timeline-title-block">
+                  <span class="timeline-badge">2020 - 2022</span>
+                  <h4 class="timeline-item-title">Plus Two (Computer Science)</h4>
+                  <p class="timeline-subtitle">MGM HSS, Kuruppampady</p>
+                </div>
+                <div class="timeline-toggle-icon">
+                  <ion-icon name="chevron-down-outline"></ion-icon>
+                </div>
+              </div>
+              <p class="timeline-text" style="margin-top: 8px;">
                 Initiated code programming in C++ and understood web architecture.
               </p>
+              <div class="timeline-expandable">
+                <div class="timeline-expandable-content">
+                  <div class="timeline-highlights">
+                    <ul class="timeline-bullet-list">
+                      <li class="timeline-bullet-item">Learned object-oriented C++ programming paradigms including pointer allocations and class structuring.</li>
+                      <li class="timeline-bullet-item">Created early layout prototypes using basic HTML structures.</li>
+                      <li class="timeline-bullet-item">Achieved a 96% score in the final board exams for Computer Science.</li>
+                    </ul>
+                    <div class="timeline-tech-box">
+                      <span class="tech-tag">C++</span>
+                      <span class="tech-tag">OOPs</span>
+                      <span class="tech-tag">HTML5</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
