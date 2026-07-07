@@ -42,6 +42,9 @@
   --shadow-md: 0 12px 20px -8px rgba(0, 0, 0, 0.5);
   --shadow-lg: 0 20px 40px -12px rgba(0, 0, 0, 0.7);
   --shadow-glow: 0 0 25px rgba(99, 102, 241, 0.2);
+
+  /* Responsive Settings */
+  --avatar-size: 300px;
 }
 
 /* --- Global Resets & Base styles --- */
@@ -461,8 +464,8 @@ section {
 
 .avatar-backdrop {
   position: absolute;
-  width: 320px;
-  height: 320px;
+  width: calc(var(--avatar-size) + 20px);
+  height: calc(var(--avatar-size) + 20px);
   background: var(--accent-gradient);
   border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
   filter: blur(25px);
@@ -479,8 +482,8 @@ section {
 
 .avatar-container {
   position: relative;
-  width: 300px;
-  height: 300px;
+  width: var(--avatar-size);
+  height: var(--avatar-size);
   border-radius: 24% 76% 35% 65% / 49% 45% 55% 51%;
   border: 2px solid var(--border-glass);
   overflow: hidden;
@@ -1015,7 +1018,7 @@ section {
 
 .projects-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   gap: 24px;
 }
 
@@ -1420,6 +1423,10 @@ footer {
 
 /* --- Media Queries --- */
 @media (max-width: 1024px) {
+  :root {
+    --avatar-size: 260px;
+  }
+
   .hero-grid {
     grid-template-columns: 1fr;
     text-align: center;
@@ -1467,6 +1474,10 @@ footer {
 }
 
 @media (max-width: 768px) {
+  :root {
+    --avatar-size: 220px;
+  }
+
   section {
     padding: 60px 0;
   }
@@ -1476,24 +1487,30 @@ footer {
   }
   
   .nav-dock {
-    width: 90%;
-    padding: 6px 12px;
+    width: auto;
+    max-width: 92%;
+    padding: 10px 16px;
     bottom: 20px;
-    justify-content: space-around;
+    gap: 12px;
+    justify-content: center;
   }
   
   .nav-link {
-    padding: 8px 12px;
-    font-size: 12px;
-    gap: 4px;
+    padding: 8px;
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+  }
+  
+  .nav-link ion-icon {
+    font-size: 20px;
   }
   
   .nav-link span {
-    display: none; /* Hide labels on very small screens, show only icons if we use them, or just use compact labels */
-  }
-  
-  .nav-link.active span, .nav-link:hover span {
-    display: inline; /* Option: reveal label on hover/active */
+    display: none !important; /* Hide text on mobile to prevent layouts jumping */
   }
   
   .form-group-wrapper {
@@ -1503,15 +1520,29 @@ footer {
   .contact-form-panel {
     padding: 24px;
   }
+  
   .modal-content-box {
     grid-template-columns: 1fr;
     grid-template-rows: 250px 1fr;
     height: auto;
     max-height: 90vh;
   }
+  
   .modal-details-side {
     border-left: none;
     border-top: 1px solid var(--border-glass);
     padding: 24px;
+  }
+}
+
+@media (max-width: 576px) {
+  .info-list {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  :root {
+    --avatar-size: 180px;
   }
 }
