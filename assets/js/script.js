@@ -249,15 +249,61 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // --- 9. LIGHTBOX / MODAL DIALOG CONTROLS ---
+  // --- 9. DETAILS MODAL CONTROLS ---
   const lightbox = document.getElementById('lightbox');
   const modalImg = document.getElementById('modal-image-display');
-  const modalTitle = document.getElementById('modal-title-h4');
+  const modalBadge = document.getElementById('modal-badge-display');
+  const modalTitleDisplay = document.getElementById('modal-title-display');
+  const modalDesc = document.getElementById('modal-desc-display');
+  const modalTech = document.getElementById('modal-tech-display');
+  const modalCta = document.getElementById('modal-cta-display');
 
-  window.showLightbox = (imgSrc, titleText) => {
-    if (!lightbox || !modalImg || !modalTitle) return;
+  window.showLightbox = (element) => {
+    if (!lightbox || !modalImg || !modalTitleDisplay || !modalDesc || !modalTech || !modalCta) return;
+    
+    // Scrape data attributes
+    const imgSrc = element.getAttribute('data-img');
+    const titleText = element.getAttribute('data-title');
+    const badgeText = element.getAttribute('data-badge');
+    const descText = element.getAttribute('data-desc');
+    const techText = element.getAttribute('data-tech');
+    const linkUrl = element.getAttribute('data-link');
+
+    // Populate preview side
     modalImg.src = imgSrc;
-    modalTitle.textContent = titleText;
+    modalImg.alt = titleText;
+
+    // Populate details side
+    modalBadge.textContent = badgeText;
+    modalTitleDisplay.textContent = titleText;
+    modalDesc.textContent = descText;
+
+    // Populate technology tags
+    modalTech.innerHTML = '';
+    if (techText) {
+      const tags = techText.split(',');
+      tags.forEach(tag => {
+        const span = document.createElement('span');
+        span.className = 'tech-tag';
+        span.textContent = tag.trim();
+        modalTech.appendChild(span);
+      });
+    }
+
+    // Populate CTA button
+    if (linkUrl) {
+      modalCta.href = linkUrl;
+      modalCta.style.display = 'inline-flex';
+      // Change text based on type
+      if (badgeText === 'NPTEL' || badgeText === 'DataCamp' || badgeText === 'freeCodeCamp' || badgeText === 'TCS iON' || badgeText === 'ICT Academy of Kerala') {
+        modalCta.querySelector('span').textContent = 'Verify Certificate';
+      } else {
+        modalCta.querySelector('span').textContent = 'View Code / Source';
+      }
+    } else {
+      modalCta.style.display = 'none';
+    }
+
     lightbox.classList.add('visible');
     document.body.style.overflow = 'hidden'; // Lock background scrolling
   };
