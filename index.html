@@ -5,62 +5,765 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Jyothish P S | Terminal</title>
+  <title>Jyothish P S | Portfolio</title>
 
   <!-- favicon -->
-  <link class="fav-icon" rel="shortcut icon" href="./assets/images/logo.ico" type="image/x-icon">
+  <link rel="shortcut icon" href="./assets/images/logo.ico" type="image/x-icon">
 
   <!-- custom css link -->
   <link rel="stylesheet" href="./assets/css/style.css">
 
-  <!-- google font link -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
+  <!-- ionicon links -->
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 </head>
 
 <body>
-  <canvas id="matrix-bg"></canvas>
-  <div class="scanlines"></div>
-  
-  <div class="terminal-window">
-    <div class="terminal-header">
-      <div class="window-controls">
-        <span class="control close"></span>
-        <span class="control minimize"></span>
-        <span class="control maximize"></span>
+
+  <!-- Scroll Progress Indicator -->
+  <div class="scroll-progress" id="scroll-progress"></div>
+
+  <!-- Ambient background canvas particles -->
+  <canvas id="bg-canvas" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: 0;"></canvas>
+
+  <!-- Background Glowing Orbs -->
+  <div class="glow-tracker">
+    <div class="glow-cursor" id="glow-cursor"></div>
+  </div>
+  <div class="bg-gradient-orb-1"></div>
+  <div class="bg-gradient-orb-2"></div>
+
+  <!-- Navigation Dock -->
+  <nav class="nav-dock">
+    <a href="#home" class="nav-link active">
+      <ion-icon name="home-outline"></ion-icon>
+      <span>Home</span>
+    </a>
+    <a href="#about" class="nav-link">
+      <ion-icon name="person-outline"></ion-icon>
+      <span>About</span>
+    </a>
+    <a href="#skills" class="nav-link">
+      <ion-icon name="construct-outline"></ion-icon>
+      <span>Skills</span>
+    </a>
+    <a href="#resume" class="nav-link">
+      <ion-icon name="document-text-outline"></ion-icon>
+      <span>Resume</span>
+    </a>
+    <a href="#portfolio" class="nav-link">
+      <ion-icon name="briefcase-outline"></ion-icon>
+      <span>Projects</span>
+    </a>
+    <a href="#contact" class="nav-link">
+      <ion-icon name="mail-outline"></ion-icon>
+      <span>Contact</span>
+    </a>
+  </nav>
+
+  <!-- Main Content -->
+  <main class="container">
+
+    <!-- HERO SECTION -->
+    <section id="home" class="hero-section">
+      <div class="hero-grid">
+        <div class="hero-content reveal active">
+          <div class="hero-tag">Available for Internships & Projects</div>
+          <h1 class="hero-title">
+            Hi, I'm <span class="gradient-text">Jyothish P S</span>
+          </h1>
+          <h2 class="hero-subtitle">
+            I'm a <span class="typed-text" id="typed-element"></span>
+          </h2>
+          <p class="hero-description text-secondary">
+            I'm an MCA graduate who enjoys turning ideas into secure, scalable, and responsive real-world software. Passionate about Full-Stack web development, AI/ML integrations, and clean code.
+          </p>
+          <div class="hero-ctas">
+            <a href="#portfolio" class="btn btn-primary">
+              <span>View Projects</span>
+              <ion-icon name="arrow-forward-outline"></ion-icon>
+            </a>
+            <a href="#contact" class="btn btn-secondary">Contact Me</a>
+          </div>
+          <div class="hero-socials">
+            <a href="https://github.com/jyothishps" target="_blank" class="social-icon-btn" aria-label="GitHub">
+              <ion-icon name="logo-github"></ion-icon>
+            </a>
+            <a href="https://www.linkedin.com/in/jyothish-p-s-672057241/" target="_blank" class="social-icon-btn" aria-label="LinkedIn">
+              <ion-icon name="logo-linkedin"></ion-icon>
+            </a>
+            <a href="mailto:jyothishparachalil@gmail.com" class="social-icon-btn" aria-label="Email">
+              <ion-icon name="mail-outline"></ion-icon>
+            </a>
+            <a href="https://www.instagram.com/j__y_o_t_h_i_s__h/" target="_blank" class="social-icon-btn" aria-label="Instagram">
+              <ion-icon name="logo-instagram"></ion-icon>
+            </a>
+          </div>
+        </div>
+
+        <div class="hero-image-wrapper reveal active">
+          <div class="avatar-backdrop"></div>
+          <div class="avatar-container">
+            <img src="./assets/images/self.png" alt="Jyothish P S Profile">
+          </div>
+        </div>
       </div>
-      <span class="window-title">jyothish@portfolio: ~ (bash)</span>
-      <div class="status-indicator">
-        <button id="sound-toggle" class="sound-btn" title="Toggle Sound" aria-label="Toggle Sound">🔊</button>
-        <span id="live-clock" class="clock-text"></span>
-        <span class="status-dot pulsing"></span>
-        <span class="status-text">ONLINE</span>
+    </section>
+
+    <!-- ABOUT SECTION -->
+    <section id="about">
+      <div class="section-title-wrapper reveal">
+        <span class="section-tag">About Me</span>
+        <h2 class="section-title">Get To Know Me</h2>
       </div>
+
+      <div class="about-grid reveal">
+        <div class="about-details">
+          <h3 class="timeline-item-title" style="font-size: 24px; margin-bottom: 12px;">Who I Am</h3>
+          <p class="about-bio">
+            I am currently pursuing a Master of Computer Applications (MCA) at Mar Athanasius College of Engineering (MACE), Kothamangalam. Technology has always been more than just a subject to me; it's a medium for solving real-world challenges. 
+          </p>
+          <p class="about-bio">
+            With internship experience in AI/ML and Django backend development, I specialize in engineering responsive frontends coupled with reliable backend architectures. I love learning new frameworks and pushing myself to build secure, robust tools.
+          </p>
+          
+          <div class="info-list">
+            <div class="info-item">
+              <span class="info-label">Born On</span>
+              <span class="info-value">January 8, 2005</span>
+            </div>
+            <div class="info-item">
+              <span class="info-label">Location</span>
+              <span class="info-value">Kochi (Ernakulam), Kerala, India</span>
+            </div>
+            <div class="info-item">
+              <span class="info-label">Email</span>
+              <span class="info-value"><a href="mailto:jyothishparachalil@gmail.com">jyothishparachalil@gmail.com</a></span>
+            </div>
+            <div class="info-item">
+              <span class="info-label">Phone</span>
+              <span class="info-value"><a href="tel:+919539728117">+91 95397 28117</a></span>
+            </div>
+          </div>
+        </div>
+
+        <div class="stats-sidebar">
+          <div class="glass-card stat-card">
+            <div class="stat-icon">
+              <ion-icon name="ribbon-outline"></ion-icon>
+            </div>
+            <div class="stat-info">
+              <span class="stat-number">2+</span>
+              <span class="stat-label">Internship Experiences</span>
+            </div>
+          </div>
+
+          <div class="glass-card stat-card">
+            <div class="stat-icon">
+              <ion-icon name="shield-checkmark-outline"></ion-icon>
+            </div>
+            <div class="stat-info">
+              <span class="stat-number">8+</span>
+              <span class="stat-label">Professional Certifications</span>
+            </div>
+          </div>
+
+          <div class="glass-card stat-card">
+            <div class="stat-icon">
+              <ion-icon name="code-working-outline"></ion-icon>
+            </div>
+            <div class="stat-info">
+              <span class="stat-number">5+</span>
+              <span class="stat-label">Personal & Academic Projects</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SKILLS SECTION -->
+    <section id="skills">
+      <div class="section-title-wrapper reveal">
+        <span class="section-tag">Expertise</span>
+        <h2 class="section-title">My Tech Stack</h2>
+      </div>
+
+      <div class="skills-grid reveal">
+        <!-- Frontend & Design -->
+        <div class="glass-card skills-category">
+          <h3 class="skills-category-title">
+            <ion-icon name="desktop-outline" style="color: var(--accent-cyan);"></ion-icon>
+            Frontend & UI Design
+          </h3>
+          <div class="skills-list">
+            <div class="skill-item">
+              <div class="skill-info">
+                <span class="skill-name">HTML5 / CSS3</span>
+                <span class="skill-percentage">90%</span>
+              </div>
+              <div class="skill-progress-bar">
+                <div class="skill-progress-fill" data-progress="90%"></div>
+              </div>
+            </div>
+
+            <div class="skill-item">
+              <div class="skill-info">
+                <span class="skill-name">Bootstrap / Tailwind CSS</span>
+                <span class="skill-percentage">80%</span>
+              </div>
+              <div class="skill-progress-bar">
+                <div class="skill-progress-fill" data-progress="80%"></div>
+              </div>
+            </div>
+
+            <div class="skill-item">
+              <div class="skill-info">
+                <span class="skill-name">JavaScript (ES6+)</span>
+                <span class="skill-percentage">75%</span>
+              </div>
+              <div class="skill-progress-bar">
+                <div class="skill-progress-fill" data-progress="75%"></div>
+              </div>
+            </div>
+
+            <div class="skill-item">
+              <div class="skill-info">
+                <span class="skill-name">Canva & Mockup Design</span>
+                <span class="skill-percentage">70%</span>
+              </div>
+              <div class="skill-progress-bar">
+                <div class="skill-progress-fill" data-progress="70%"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Backend & Systems -->
+        <div class="glass-card skills-category">
+          <h3 class="skills-category-title">
+            <ion-icon name="server-outline" style="color: var(--accent-indigo);"></ion-icon>
+            Backend & Programming
+          </h3>
+          <div class="skills-list">
+            <div class="skill-item">
+              <div class="skill-info">
+                <span class="skill-name">Python</span>
+                <span class="skill-percentage">90%</span>
+              </div>
+              <div class="skill-progress-bar">
+                <div class="skill-progress-fill" data-progress="90%"></div>
+              </div>
+            </div>
+
+            <div class="skill-item">
+              <div class="skill-info">
+                <span class="skill-name">Django / Backend Framework</span>
+                <span class="skill-percentage">80%</span>
+              </div>
+              <div class="skill-progress-bar">
+                <div class="skill-progress-fill" data-progress="80%"></div>
+              </div>
+            </div>
+
+            <div class="skill-item">
+              <div class="skill-info">
+                <span class="skill-name">C / C++ Programming</span>
+                <span class="skill-percentage">80%</span>
+              </div>
+              <div class="skill-progress-bar">
+                <div class="skill-progress-fill" data-progress="80%"></div>
+              </div>
+            </div>
+
+            <div class="skill-item">
+              <div class="skill-info">
+                <span class="skill-name">PHP & SQL (Database Management)</span>
+                <span class="skill-percentage">70%</span>
+              </div>
+              <div class="skill-progress-bar">
+                <div class="skill-progress-fill" data-progress="70%"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- RESUME SECTION -->
+    <section id="resume">
+      <div class="section-title-wrapper reveal">
+        <span class="section-tag">Timeline</span>
+        <h2 class="section-title">Education & Experience</h2>
+      </div>
+
+      <div class="timeline-section-grid reveal">
+        <!-- Experience -->
+        <div class="timeline-column">
+          <h3 class="timeline-column-title">
+            <ion-icon name="briefcase-outline"></ion-icon>
+            Professional <span>Experience</span>
+          </h3>
+          <div class="timeline-container">
+            <div class="glass-card timeline-item">
+              <span class="timeline-badge">May 2026 - July 2026</span>
+              <h4 class="timeline-item-title">AI / ML Intern</h4>
+              <p class="timeline-subtitle">Elixir Softwares, Kaloor</p>
+              <p class="timeline-text">
+                Assisted in designing intelligent machine learning analysis systems. Developed data processing pipelines and explored classification/regression techniques for prediction analysis.
+              </p>
+            </div>
+
+            <div class="glass-card timeline-item">
+              <span class="timeline-badge">Dec 2024 - Apr 2025</span>
+              <h4 class="timeline-item-title">Python Django Intern</h4>
+              <p class="timeline-subtitle">Progressive Software Solutions, Muvattupuzha</p>
+              <p class="timeline-text">
+                Designed secure backend APIs, integrated relational databases, and built administration dashboards. Focused on enhancing platform security and user access control models.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Education -->
+        <div class="timeline-column">
+          <h3 class="timeline-column-title">
+            <ion-icon name="academic-outline"></ion-icon>
+            Academic <span>Background</span>
+          </h3>
+          <div class="timeline-container">
+            <div class="glass-card timeline-item">
+              <span class="timeline-badge">2025 - 2027</span>
+              <h4 class="timeline-item-title">Master of Computer Applications (MCA)</h4>
+              <p class="timeline-subtitle">MACE, Kothamangalam</p>
+              <p class="timeline-text">
+                Deepening knowledge in advanced computer science architectures, software design principles, cloud computing, and advanced AI methodologies.
+              </p>
+            </div>
+
+            <div class="glass-card timeline-item">
+              <span class="timeline-badge">2022 - 2025</span>
+              <h4 class="timeline-item-title">Bachelor of Computer Applications (BCA)</h4>
+              <p class="timeline-subtitle">Nirmala College, Muvattupuzha</p>
+              <p class="timeline-text">
+                Built foundational capabilities in algorithm optimization, relational database designs, system operations, and standard object-oriented development.
+              </p>
+            </div>
+
+            <div class="glass-card timeline-item">
+              <span class="timeline-badge">2020 - 2022</span>
+              <h4 class="timeline-item-title">Plus Two (Computer Science)</h4>
+              <p class="timeline-subtitle">MGM HSS, Kuruppampady</p>
+              <p class="timeline-text">
+                Initiated code programming in C++ and understood web architecture.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS SECTION -->
+    <section id="portfolio">
+      <div class="section-title-wrapper reveal">
+        <span class="section-tag">Work Showcase</span>
+        <h2 class="section-title">My Projects</h2>
+      </div>
+
+      <!-- Filter tabs -->
+      <div class="filter-tabs reveal">
+        <button class="filter-btn active" data-filter="all">All Projects</button>
+        <button class="filter-btn" data-filter="dev">Development</button>
+        <button class="filter-btn" data-filter="ai-ml">AI & ML</button>
+        <button class="filter-btn" data-filter="academic">Academic & Systems</button>
+      </div>
+
+      <div class="projects-grid reveal">
+        <!-- Project 1 -->
+        <div class="glass-card project-card" data-category="ai-ml">
+          <div class="project-image-box">
+            <img src="./assets/images/project-1.jpg" alt="IntelliPredict AI">
+            <div class="project-overlay" onclick="showLightbox('./assets/images/project-1.jpg', 'IntelliPredict AI - ML Analysis System')">
+              <div class="project-link-icon">
+                <ion-icon name="eye-outline"></ion-icon>
+              </div>
+            </div>
+          </div>
+          <div class="project-info-box">
+            <span class="project-card-tag">AI & Machine Learning</span>
+            <h4 class="project-card-title">IntelliPredict AI</h4>
+            <p class="project-card-desc">
+              An intelligent ML platform performing comprehensive classification and predictive analysis using Scikit-Learn pipelines.
+            </p>
+            <div class="project-tech-tags">
+              <span class="tech-tag">Python</span>
+              <span class="tech-tag">Scikit-Learn</span>
+              <span class="tech-tag">Pandas</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 2 -->
+        <div class="glass-card project-card" data-category="dev">
+          <div class="project-image-box">
+            <img src="./assets/images/project-2.png" alt="Secure Django Portal">
+            <div class="project-overlay" onclick="showLightbox('./assets/images/project-2.png', 'Secure Django Portal')">
+              <div class="project-link-icon">
+                <ion-icon name="eye-outline"></ion-icon>
+              </div>
+            </div>
+          </div>
+          <div class="project-info-box">
+            <span class="project-card-tag">Web Development</span>
+            <h4 class="project-card-title">Secure Django Portal</h4>
+            <p class="project-card-desc">
+              Web application prioritizing administrative control, middleware encryption, user access management, and structured SQLite models.
+            </p>
+            <div class="project-tech-tags">
+              <span class="tech-tag">Django</span>
+              <span class="tech-tag">Python</span>
+              <span class="tech-tag">SQLite</span>
+              <span class="tech-tag">Bootstrap</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 3 -->
+        <div class="glass-card project-card" data-category="academic">
+          <div class="project-image-box">
+            <img src="./assets/images/project-3.jpg" alt="CLI System Scheduler">
+            <div class="project-overlay" onclick="showLightbox('./assets/images/project-3.jpg', 'CLI System Scheduler')">
+              <div class="project-link-icon">
+                <ion-icon name="eye-outline"></ion-icon>
+              </div>
+            </div>
+          </div>
+          <div class="project-info-box">
+            <span class="project-card-tag">Operating Systems</span>
+            <h4 class="project-card-title">CLI System Scheduler</h4>
+            <p class="project-card-desc">
+              A command-line tool built in C++ that simulates CPU scheduling algorithms like Round Robin, FCFS, and priority schedules.
+            </p>
+            <div class="project-tech-tags">
+              <span class="tech-tag">C++</span>
+              <span class="tech-tag">Systems Program</span>
+              <span class="tech-tag">CLI</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 4 -->
+        <div class="glass-card project-card" data-category="dev">
+          <div class="project-image-box">
+            <img src="./assets/images/project-4.png" alt="Responsive vCard Theme">
+            <div class="project-overlay" onclick="showLightbox('./assets/images/project-4.png', 'Responsive vCard Theme')">
+              <div class="project-link-icon">
+                <ion-icon name="eye-outline"></ion-icon>
+              </div>
+            </div>
+          </div>
+          <div class="project-info-box">
+            <span class="project-card-tag">Web Design</span>
+            <h4 class="project-card-title">Responsive vCard Theme</h4>
+            <p class="project-card-desc">
+              Highly responsive personal identity portfolio page using vanilla CSS grids, custom properties, and smooth layout toggles.
+            </p>
+            <div class="project-tech-tags">
+              <span class="tech-tag">HTML5</span>
+              <span class="tech-tag">CSS3</span>
+              <span class="tech-tag">JavaScript</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 5 -->
+        <div class="glass-card project-card" data-category="academic">
+          <div class="project-image-box">
+            <img src="./assets/images/project-5.png" alt="Database Query Tool">
+            <div class="project-overlay" onclick="showLightbox('./assets/images/project-5.png', 'Database Query Tool')">
+              <div class="project-link-icon">
+                <ion-icon name="eye-outline"></ion-icon>
+              </div>
+            </div>
+          </div>
+          <div class="project-info-box">
+            <span class="project-card-tag">Database & Analytics</span>
+            <h4 class="project-card-title">Database Query Tool</h4>
+            <p class="project-card-desc">
+              A utility that executes SQL queries, formats tabular results, and presents basic analytics datasets inside a Python interface.
+            </p>
+            <div class="project-tech-tags">
+              <span class="tech-tag">Python</span>
+              <span class="tech-tag">SQL</span>
+              <span class="tech-tag">Tkinter</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CERTIFICATIONS SECTION -->
+    <section id="certifications">
+      <div class="section-title-wrapper reveal">
+        <span class="section-tag">Credentials</span>
+        <h2 class="section-title">My Certifications</h2>
+      </div>
+
+      <div class="projects-grid reveal">
+        <!-- Cert 1 -->
+        <div class="glass-card project-card">
+          <div class="project-image-box">
+            <img src="./assets/images/privacy-nptel.png" alt="Privacy and Security in Online Social Media">
+            <div class="project-overlay" onclick="showLightbox('./assets/images/privacy-nptel.png', 'Privacy and Security in Online Social Media (NPTEL)')">
+              <div class="project-link-icon">
+                <ion-icon name="eye-outline"></ion-icon>
+              </div>
+            </div>
+          </div>
+          <div class="project-info-box">
+            <span class="project-card-tag">NPTEL</span>
+            <h4 class="project-card-title">Privacy and Security in Online Social Media</h4>
+            <p class="project-card-desc">
+              Advanced study of privacy issues, trust models, user behavior analysis, and security risks in social networks.
+            </p>
+          </div>
+        </div>
+
+        <!-- Cert 2 -->
+        <div class="glass-card project-card">
+          <div class="project-image-box">
+            <img src="./assets/images/dbms.png" alt="Database Management System">
+            <div class="project-overlay" onclick="showLightbox('./assets/images/dbms.png', 'Database Management System (NPTEL)')">
+              <div class="project-link-icon">
+                <ion-icon name="eye-outline"></ion-icon>
+              </div>
+            </div>
+          </div>
+          <div class="project-info-box">
+            <span class="project-card-tag">NPTEL</span>
+            <h4 class="project-card-title">Database Management System</h4>
+            <p class="project-card-desc">
+              Covers relational database model, normalization, ER modeling, SQL querying, transactional controls, and indexing architectures.
+            </p>
+          </div>
+        </div>
+
+        <!-- Cert 3 -->
+        <div class="glass-card project-card">
+          <div class="project-image-box">
+            <img src="./assets/images/c.png" alt="Problem Solving Through Programming in C">
+            <div class="project-overlay" onclick="showLightbox('./assets/images/c.png', 'Problem Solving Through Programming in C (NPTEL)')">
+              <div class="project-link-icon">
+                <ion-icon name="eye-outline"></ion-icon>
+              </div>
+            </div>
+          </div>
+          <div class="project-info-box">
+            <span class="project-card-tag">NPTEL</span>
+            <h4 class="project-card-title">Problem Solving Through Programming in C</h4>
+            <p class="project-card-desc">
+              Foundational C programming concepts covering multi-dimensional arrays, functions, pointers, structure types, and algorithms.
+            </p>
+          </div>
+        </div>
+
+        <!-- Cert 4 -->
+        <div class="glass-card project-card">
+          <div class="project-image-box">
+            <img src="./assets/images/introPy.png" alt="Introduction to Python">
+            <div class="project-overlay" onclick="showLightbox('./assets/images/introPy.png', 'Introduction to Python (DataCamp)')">
+              <div class="project-link-icon">
+                <ion-icon name="eye-outline"></ion-icon>
+              </div>
+            </div>
+          </div>
+          <div class="project-info-box">
+            <span class="project-card-tag">DataCamp</span>
+            <h4 class="project-card-title">Introduction to Python</h4>
+            <p class="project-card-desc">
+              Covers Python base syntax, data structures, list manipulations, function variables, and mathematical computing with NumPy.
+            </p>
+          </div>
+        </div>
+
+        <!-- Cert 5 -->
+        <div class="glass-card project-card">
+          <div class="project-image-box">
+            <img src="./assets/images/intermediatePy.png" alt="Intermediate Python">
+            <div class="project-overlay" onclick="showLightbox('./assets/images/intermediatePy.png', 'Intermediate Python (DataCamp)')">
+              <div class="project-link-icon">
+                <ion-icon name="eye-outline"></ion-icon>
+              </div>
+            </div>
+          </div>
+          <div class="project-info-box">
+            <span class="project-card-tag">DataCamp</span>
+            <h4 class="project-card-title">Intermediate Python</h4>
+            <p class="project-card-desc">
+              Intermediate Python modules including matplotlib plotting, data structures filtering, dictionary lookups, and pandas dataframes.
+            </p>
+          </div>
+        </div>
+
+        <!-- Cert 6 -->
+        <div class="glass-card project-card">
+          <div class="project-image-box">
+            <img src="./assets/images/freeCodeCamp.png" alt="Responsive Web Design">
+            <div class="project-overlay" onclick="showLightbox('./assets/images/freeCodeCamp.png', 'Responsive Web Design (freeCodeCamp)')">
+              <div class="project-link-icon">
+                <ion-icon name="eye-outline"></ion-icon>
+              </div>
+            </div>
+          </div>
+          <div class="project-info-box">
+            <span class="project-card-tag">freeCodeCamp</span>
+            <h4 class="project-card-title">Responsive Web Design</h4>
+            <p class="project-card-desc">
+              Comprehensive developer program covering HTML5, CSS3, responsive layout patterns, media queries, grids, and flexboxes.
+            </p>
+          </div>
+        </div>
+
+        <!-- Cert 7 -->
+        <div class="glass-card project-card">
+          <div class="project-image-box">
+            <img src="./assets/images/tcs.png" alt="Career Edge - Young Professional">
+            <div class="project-overlay" onclick="showLightbox('./assets/images/tcs.png', 'Career Edge - Young Professional (TCS iON)')">
+              <div class="project-link-icon">
+                <ion-icon name="eye-outline"></ion-icon>
+              </div>
+            </div>
+          </div>
+          <div class="project-info-box">
+            <span class="project-card-tag">TCS iON</span>
+            <h4 class="project-card-title">Career Edge - Young Professional</h4>
+            <p class="project-card-desc">
+              Professional skill modules focusing on soft skills, behavioral attributes, corporate communications, and workplace ethics.
+            </p>
+          </div>
+        </div>
+
+        <!-- Cert 8 -->
+        <div class="glass-card project-card">
+          <div class="project-image-box">
+            <img src="./assets/images/excel.png" alt="Advanced Excel">
+            <div class="project-overlay" onclick="showLightbox('./assets/images/excel.png', 'Advanced Excel (ICT Academy of Kerala)')">
+              <div class="project-link-icon">
+                <ion-icon name="eye-outline"></ion-icon>
+              </div>
+            </div>
+          </div>
+          <div class="project-info-box">
+            <span class="project-card-tag">ICT Academy of Kerala</span>
+            <h4 class="project-card-title">Advanced Excel</h4>
+            <p class="project-card-desc">
+              Practical mastery in spreadsheet tools covering pivot tables, data sorting/filtering, complex formulas, and dashboarding.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section id="contact">
+      <div class="section-title-wrapper reveal">
+        <span class="section-tag">Reach Out</span>
+        <h2 class="section-title">Contact Me</h2>
+      </div>
+
+      <div class="contact-grid reveal">
+        <div class="contact-info-panel">
+          <h3 class="timeline-item-title" style="font-size: 24px;">Let's Build Something Together</h3>
+          <p class="contact-msg">
+            I am always open to discussing web application projects, internship opportunities, system designs, or AI/ML problems. Feel free to contact me using any of the channels below!
+          </p>
+
+          <div class="contact-channels">
+            <a href="mailto:jyothishparachalil@gmail.com" class="glass-card contact-card">
+              <div class="contact-card-icon">
+                <ion-icon name="mail-outline"></ion-icon>
+              </div>
+              <div class="contact-card-content">
+                <span class="contact-card-label">Send Email</span>
+                <span class="contact-card-value">jyothishparachalil@gmail.com</span>
+              </div>
+            </a>
+
+            <a href="tel:+919539728117" class="glass-card contact-card">
+              <div class="contact-card-icon">
+                <ion-icon name="call-outline"></ion-icon>
+              </div>
+              <div class="contact-card-content">
+                <span class="contact-card-label">Phone Call</span>
+                <span class="contact-card-value">+91 95397 28117</span>
+              </div>
+            </a>
+
+            <div class="glass-card contact-card">
+              <div class="contact-card-icon">
+                <ion-icon name="location-outline"></ion-icon>
+              </div>
+              <div class="contact-card-content">
+                <span class="contact-card-label">Based In</span>
+                <span class="contact-card-value">Kochi, Kerala, India</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="glass-card contact-form-panel">
+          <h3 class="form-title-h3">Drop a Message</h3>
+          <form class="form" id="contact-form">
+            <div class="form-group-wrapper">
+              <div class="form-control-group">
+                <label for="fullname" class="form-control-label">Full Name</label>
+                <input type="text" id="fullname" name="fullname" class="form-input-field" placeholder="John Doe" required>
+              </div>
+              <div class="form-control-group">
+                <label for="email" class="form-control-label">Email Address</label>
+                <input type="email" id="email" name="email" class="form-input-field" placeholder="john@example.com" required>
+              </div>
+            </div>
+            <div class="form-control-group">
+              <label for="message" class="form-control-label">Your Message</label>
+              <textarea id="message" name="message" class="form-input-field" placeholder="Hello! I would like to talk to you about..." required></textarea>
+            </div>
+            <button class="btn btn-primary contact-submit-btn" type="submit" id="form-submit-btn">
+              <ion-icon name="paper-plane-outline"></ion-icon>
+              <span>Send Message</span>
+            </button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+      <div class="footer-content">
+        <p class="footer-copy">&copy; 2026 Jyothish P S. All rights reserved.</p>
+        <p class="footer-copy" style="font-size: 12px; opacity: 0.6;">Built with HTML5, CSS3 Glassmorphism, and Vanilla JavaScript</p>
+      </div>
+    </footer>
+
+  </main>
+
+  <!-- Image Lightbox Modal -->
+  <div id="lightbox" class="modal">
+    <div class="modal-close-btn" onclick="closeLightbox()">
+      <ion-icon name="close-outline"></ion-icon>
     </div>
-    <div id="terminal">
-      <div id="output"></div>
-      <div id="input-line" class="input-line">
-        <span class="prompt">jyothish@portfolio:~$</span>
-        <input type="text" id="cmd-input" autocomplete="off" spellcheck="false" autofocus>
+    <div class="modal-content-box">
+      <div class="modal-head">
+        <span id="modal-title-h4" class="modal-title-h4">Image Preview</span>
+      </div>
+      <div class="modal-body-content">
+        <img id="modal-image-display" src="" alt="Lightbox View">
       </div>
     </div>
   </div>
 
-  <!-- Certificate Modal -->
-  <div id="cert-modal" class="modal">
-    <div class="modal-box">
-      <div class="modal-header">
-        <span id="modal-title">Certificate Viewer</span>
-        <span class="close-modal">&times;</span>
-      </div>
-      <div class="modal-body">
-        <img id="modal-img" src="" alt="Certificate">
-      </div>
-    </div>
-  </div>
-
+  <!-- custom script link -->
   <script src="./assets/js/script.js"></script>
+
 </body>
 
 </html>
